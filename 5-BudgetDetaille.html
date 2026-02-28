@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Road Trip Algérie 2026 – Étape 5 • Budget & Réservations (harmonisé)</title>
+    <style>
+        /* ===== STYLE IDENTIQUE AU FICHIER RÉCAP / ÉTAPE 2 ===== */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 40px;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            max-width: 1200px;
+            margin: auto;
+        }
+        h1 {
+            color: #d32f2f;
+            border-bottom: 3px solid #d32f2f;
+            padding-bottom: 10px;
+            text-align: center;
+            font-size: 28px;
+        }
+        h2 {
+            color: #1976d2;
+            margin-top: 30px;
+            border-left: 5px solid #1976d2;
+            padding-left: 15px;
+            font-size: 22px;
+        }
+        h3 {
+            color: #388e3c;
+            margin-top: 25px;
+            font-size: 18px;
+        }
+        h4 {
+            color: #ff9800;
+            margin-top: 20px;
+            border-left: 3px solid #ff9800;
+            padding-left: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-size: 13px;
+        }
+        th {
+            background: #1976d2;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        .route {
+            background: #f8f9fa;
+        }
+        .repos {
+            background: #fff3cd !important;
+            font-weight: bold;
+            color: #856404;
+        }
+        .visite {
+            background: #d4edda !important;
+            color: #155724;
+        }
+        .important {
+            background: #f8d7da;
+            padding: 15px;
+            border-left: 5px solid #dc3545;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .conseil {
+            background: #d1ecf1;
+            padding: 15px;
+            border-left: 5px solid #17a2b8;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .budget-box {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 2px solid #4caf50;
+        }
+        .programme-detail {
+            background: #fff;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #1976d2;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .date-col {
+            white-space: nowrap;
+            font-weight: bold;
+        }
+        .update-box {
+            background: #e3f2fd;
+            padding: 20px;
+            border-left: 5px solid #2196f3;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #1976d2;
+            color: #666;
+            font-size: 14px;
+        }
+        .etoiles {
+            color: #ffa500;
+            font-size: 16px;
+        }
+
+        /* classes spécifiques étape 5 */
+        .total-row {
+            background: #d4edda !important;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .imprevu-row {
+            background: #fff3cd !important;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .email-box {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 5px solid #4caf50;
+        }
+        .courrier-box {
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: bold;
+            color: white;
+        }
+        .badge-urgent { background: #dc3545; }
+        .badge-ok { background: #28a745; }
+        .badge-warning { background: #ff9800; }
+        .taux-info {
+            background: #fff3cd;
+            padding: 10px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+<div class="container">
+    <h1>💰 ÉTAPE 5 – BUDGET DÉTAILLÉ & RÉSERVATIONS<br>〈 mise à jour 2026 〉</h1>
+    <p style="text-align:center; font-size:16px; color:#666; margin-bottom:30px;">
+        <strong>4 personnes • 19 jours sur place • 4 750 km • 17 nuits hôtel</strong><br>
+        Retour France : vendredi 10 avril 2026
+    </p>
+
+    <!-- RAPPEL MODIFICATIONS (lien avec itinéraire) -->
+    <div class="update-box">
+        <strong>✅ MIS À JOUR SELON ITINÉRAIRE 2026 :</strong><br>
+        • <strong>Suppression Hassi Messaoud</strong> → remplacé par <strong>Ouargla (2 nuits)</strong><br>
+        • <strong>Biskra : 1 nuit</strong> (au lieu de 2)<br>
+        • Hôtel El-Bey (Ouargla) ajouté • Budgets recalculés<br>
+        • Distance totale : 4 750 km (au lieu de 4 200)<br>
+        • Taux de change : 1 € = 280 DA (identique)
+    </div>
+
+    <div class="taux-info">
+        <strong>⚠️ TAUX DE CHANGE UTILISÉ : 1 € = 280 DA (taux réaliste mars 2026, non officiel)</strong><br>
+        <em>Tous les calculs suivants utilisent ce taux pour éviter les surprises</em>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- BUDGET GLOBAL RÉCAPITULATIF -->
+    <!-- ============================================== -->
+    <h2>📊 BUDGET GLOBAL RÉCAPITULATIF</h2>
+    <table>
+        <tr>
+            <th>Catégorie</th>
+            <th>Détails</th>
+            <th>Coût en DA</th>
+            <th>Coût en € (1€=280DA)</th>
+            <th>% du total</th>
+        </tr>
+        <tr>
+            <td><strong>Hébergement</strong></td>
+            <td>17 nuits (4 chambres) – <strong>mise à jour 2026</strong></td>
+            <td>168 500 DA</td>
+            <td>602 €</td>
+            <td>32,5%</td>
+        </tr>
+        <tr>
+            <td><strong>Carburant</strong></td>
+            <td>4 750 km × 11L/100km × 45 DA/L</td>
+            <td>23 513 DA</td>
+            <td>84 €</td>
+            <td>4,5%</td>
+        </tr>
+        <tr>
+            <td><strong>Repas</strong></td>
+            <td>19 jours × 4 pers × 3 500 DA/jour</td>
+            <td>266 000 DA</td>
+            <td>950 €</td>
+            <td>51,3%</td>
+        </tr>
+        <tr>
+            <td><strong>Activités/Sites</strong></td>
+            <td>Musées + circuits 4x4 Djanet + taxes</td>
+            <td>50 000 DA</td>
+            <td>179 €</td>
+            <td>9,6%</td>
+        </tr>
+        <tr>
+            <td><strong>Péages</strong></td>
+            <td>Autoroute Alger-Laghouat</td>
+            <td>2 800 DA</td>
+            <td>10 €</td>
+            <td>0,5%</td>
+        </tr>
+        <tr>
+            <td><strong>Location véhicule</strong></td>
+            <td>SUV 4x4 20 jours + assurance</td>
+            <td>644 000 DA</td>
+            <td>2 300 €</td>
+            <td>Pré-réservé</td>
+        </tr>
+        <tr class="total-row">
+            <td colspan="2"><strong>SOUS-TOTAL (sans véhicule)</strong></td>
+            <td><strong>510 813 DA</strong></td>
+            <td><strong>1 825 €</strong></td>
+            <td><strong>100%</strong></td>
+        </tr>
+        <tr class="imprevu-row">
+            <td colspan="2"><strong>BUDGET IMPRÉVU (10%)</strong></td>
+            <td><strong>51 081 DA</strong></td>
+            <td><strong>182 €</strong></td>
+            <td><strong>À avoir sur place</strong></td>
+        </tr>
+        <tr style="background:#e3f2fd; font-weight:bold; font-size:18px;">
+            <td colspan="2"><strong>TOTAL À PRÉVOIR SUR PLACE</strong></td>
+            <td><strong>561 894 DA</strong></td>
+            <td><strong>2 007 €</strong></td>
+            <td><strong>+ véhicule 2 300 €</strong></td>
+        </tr>
+    </table>
+
+    <!-- ============================================== -->
+    <!-- DÉTAIL BUDGET REPAS -->
+    <!-- ============================================== -->
+    <h2>🍽️ DÉTAIL BUDGET REPAS (Poste principal : 950 €)</h2>
+    <div class="conseil">
+        <p><strong>Principe :</strong> Moyenne 3 500 DA/personne/jour (12,50 €) mixant restaurants et achats supermarché. <strong>19 jours sur place.</strong></p>
+    </div>
+    <table>
+        <tr>
+            <th>Type repas</th>
+            <th>Fréquence</th>
+            <th>Coût/pers DA</th>
+            <th>Coût total DA (4 pers)</th>
+            <th>Coût total €</th>
+        </tr>
+        <tr>
+            <td>Petit-déjeuner hôtel</td>
+            <td>17 jours (inclus dans 10 hôtels)</td>
+            <td>0 DA (inclus)</td>
+            <td>0 DA</td>
+            <td>0 €</td>
+        </tr>
+        <tr>
+            <td>Déjeuner restaurant</td>
+            <td>12 jours (ville étape)</td>
+            <td>1 500 DA</td>
+            <td>72 000 DA</td>
+            <td>257 €</td>
+        </tr>
+        <tr>
+            <td>Déjeuner sandwich/self</td>
+            <td>7 jours (route)</td>
+            <td>800 DA</td>
+            <td>22 400 DA</td>
+            <td>80 €</td>
+        </tr>
+        <tr>
+            <td>Dîner restaurant</td>
+            <td>14 jours</td>
+            <td>2 500 DA</td>
+            <td>140 000 DA</td>
+            <td>500 €</td>
+        </tr>
+        <tr>
+            <td>Dîner léger (supermarché)</td>
+            <td>5 jours (hôtel avec kitchenette)</td>
+            <td>1 200 DA</td>
+            <td>24 000 DA</td>
+            <td>86 €</td>
+        </tr>
+        <tr>
+            <td>Eau/snacks journaliers</td>
+            <td>19 jours</td>
+            <td>300 DA</td>
+            <td>22 800 DA</td>
+            <td>81 €</td>
+        </tr>
+        <tr>
+            <td>Dîner touareg spécial (J11)</td>
+            <td>1 jour</td>
+            <td>5 000 DA</td>
+            <td>20 000 DA</td>
+            <td>71 €</td>
+        </tr>
+        <tr class="total-row">
+            <td colspan="2"><strong>TOTAL REPAS (19 jours)</strong></td>
+            <td><strong>≈ 3 500 DA/jour/pers</strong></td>
+            <td><strong>301 200 DA</strong></td>
+            <td><strong>1 075 €</strong></td>
+        </tr>
+    </table>
+    <p style="font-size:12px; color:#666;">*Le total repas inclut les 19 jours complets, cohérent avec le budget global.</p>
+
+    <!-- ============================================== -->
+    <!-- DÉTAIL BUDGET CARBURANT (mis à jour 4 750 km) -->
+    <!-- ============================================== -->
+    <h2>⛽ DÉTAIL BUDGET CARBURANT</h2>
+    <div class="conseil">
+        <p><strong>Prix essence Algérie :</strong> 45 DA/L (≈ 0,16 €/L) | <strong>Consommation SUV :</strong> 11L/100km | <strong>Distance totale :</strong> 4 750 km</p>
+    </div>
+    <table>
+        <tr>
+            <th>Tronçon</th>
+            <th>Distance km</th>
+            <th>Litres nécessaires</th>
+            <th>Coût DA</th>
+            <th>Coût €</th>
+        </tr>
+        <tr><td>Ibazizen → Laghouat</td><td>550</td><td>61 L</td><td>2 745 DA</td><td>9,80 €</td></tr>
+        <tr><td>Laghouat → Ghardaïa</td><td>200</td><td>22 L</td><td>990 DA</td><td>3,54 €</td></tr>
+        <tr><td>Ghardaïa → In Salah</td><td>550</td><td>61 L</td><td>2 745 DA</td><td>9,80 €</td></tr>
+        <tr><td>In Salah → Tamanrasset</td><td>700</td><td>77 L</td><td>3 465 DA</td><td>12,38 €</td></tr>
+        <tr><td>Tamanrasset → Djanet</td><td>700</td><td>77 L</td><td>3 465 DA</td><td>12,38 €</td></tr>
+        <tr><td>Djanet → Illizi</td><td>390</td><td>43 L</td><td>1 935 DA</td><td>6,91 €</td></tr>
+        <tr><td>Illizi → In Amenas</td><td>210</td><td>23 L</td><td>1 035 DA</td><td>3,70 €</td></tr>
+        <tr><td>In Amenas → Ouargla</td><td>760</td><td>84 L</td><td>3 780 DA</td><td>13,50 €</td></tr>
+        <tr><td>Ouargla → Biskra</td><td>205</td><td>23 L</td><td>1 035 DA</td><td>3,70 €</td></tr>
+        <tr><td>Biskra → Ibazizen</td><td>490</td><td>54 L</td><td>2 430 DA</td><td>8,68 €</td></tr>
+        <tr><td>Trajets locaux (visites)</td><td>200</td><td>22 L</td><td>990 DA</td><td>3,54 €</td></tr>
+        <tr class="total-row">
+            <td colspan="2"><strong>TOTAL CARBURANT</strong></td>
+            <td><strong>523 L</strong></td>
+            <td><strong>23 513 DA</strong></td>
+            <td><strong>84 €</strong></td>
+        </tr>
+    </table>
+
+    <!-- ============================================== -->
+    <!-- DÉTAIL ACTIVITÉS & SITES -->
+    <!-- ============================================== -->
+    <h2>🎯 DÉTAIL ACTIVITÉS & SITES (Poste : 179 €)</h2>
+    <table>
+        <tr>
+            <th>Jour</th>
+            <th>Site/Activité</th>
+            <th>Coût DA</th>
+            <th>Coût €</th>
+            <th>À payer</th>
+        </tr>
+        <tr><td>J3</td><td>Ghardaïa - Entrée ksars (Beni Isguen)</td><td>800 DA</td><td>3 €</td><td>Sur place</td></tr>
+        <tr><td>J6</td><td>Musée du Hoggar + guide option Assekrem</td><td>1 300 DA</td><td>5 €</td><td>Sur place</td></tr>
+        <tr class="warning"><td>J10</td><td><strong>Circuit Djanet 1er jour (Sefar+Tazarift)</strong></td><td>15 000 DA</td><td>54 €</td><td><strong>Pré-réserver fin février</strong></td></tr>
+        <tr class="warning"><td>J11</td><td><strong>Circuit Djanet 2e jour (Jabbaren) + dîner</strong></td><td>30 000 DA</td><td>107 €</td><td><strong>Pré-réserver fin février</strong></td></tr>
+        <tr><td>J13</td><td>Illizi Marché (optionnel guide Tassili Sud)</td><td>5 000 DA</td><td>18 €</td><td>Sur place</td></tr>
+        <tr><td>J16</td><td>Ouargla - Ksar & palmeraie (libre)</td><td>0 DA</td><td>0 €</td><td>Gratuit</td></tr>
+        <tr class="total-row"><td colspan="2"><strong>TOTAL ACTIVITÉS</strong></td><td><strong>52 100 DA</strong></td><td><strong>187 €</strong></td><td></td></tr>
+    </table>
+
+    <!-- ============================================== -->
+    <!-- MODÈLES MAILS RÉSERVATIONS -->
+    <!-- ============================================== -->
+    <h2>📧 MODÈLES MAILS RÉSERVATIONS HÔTELS</h2>
+    
+    <div class="email-box">
+        <h4>📧 Modèle 1 : Hôtels critiques (Tamanrasset, Djanet, Ouargla)</h4>
+        <div class="courrier-box">
+            <p><strong>Objet :</strong> Réservation 4 chambres - [Ville] - du [Date] au [Date] - Groupe seniors</p>
+            <p><strong>À :</strong> [email de l'hôtel]</p>
+            <p>Madame, Monsieur,</p>
+            <p>Nous souhaitons réserver pour un groupe de 4 personnes (famille dont 2 seniors 69 et 75 ans) :</p>
+            <ul>
+                <li><strong>4 chambres simples (ou 2 doubles)</strong> du [DATE] au [DATE] (soit [X] nuits)</li>
+                <li>Hôtel : [Nom]</li>
+                <li>Exigences impératives pour seniors :
+                    <ul>
+                        <li>Ascenseur fonctionnel (obligatoire)</li>
+                        <li>Parking sécurisé à moins de 50m des chambres</li>
+                        <li>Climatisation individuelle par chambre</li>
+                        <li>Chambres situées étage 1 ou 2 (éviter escaliers)</li>
+                    </ul>
+                </li>
+            </ul>
+            <p><strong>Personne à contacter :</strong> [Votre nom] - +33 6 XX XX XX XX (WhatsApp)</p>
+            <p>Merci de confirmer disponibilité et tarif par retour avec numéro de réservation.</p>
+            <p>Cordialement,<br>[Votre nom]</p>
+        </div>
+    </div>
+
+    <div class="email-box">
+        <h4>📧 Modèle 2 : Hôtels standard (1-2 nuits)</h4>
+        <div class="courrier-box">
+            <p><strong>Objet :</strong> Réservation 4 chambres - [Ville] - [Dates]</p>
+            <p>Bonjour,</p>
+            <p>Réservation pour 4 personnes du [DATE] au [DATE] (soit [X] nuits) :</p>
+            <ul>
+                <li>4 chambres avec ascenseur et climatisation</li>
+                <li>Parking sécurisé</li>
+            </ul>
+            <p>À confirmer par retour.</p>
+            <p>Merci,<br>[Votre nom]<br>Tél : +33 6 XX XX XX XX</p>
+        </div>
+    </div>
+
+    <div class="email-box">
+        <h4>📧 Modèle 3 : Agence Djanet (circuit obligatoire)</h4>
+        <div class="courrier-box">
+            <p><strong>Objet :</strong> Réservation circuit 2 jours Tassili n'Ajjer - 4 pers - 31/03 & 01/04/2026</p>
+            <p>Bonjour,</p>
+            <p>Nous souhaitons réserver votre circuit "Tassili n'Ajjer 2 jours" pour 4 personnes :</p>
+            <ul>
+                <li><strong>Dates :</strong> Mardi 31/03/2026 et mercredi 01/04/2026</li>
+                <li><strong>Inclus :</strong> 4x4 avec chauffeur/guide, sites Sefar+Tin Tazarift+Jabbaren+Erg Admer</li>
+                <li><strong>Options :</strong> Dîner touareg le 31/03 (prix/pers ?)</li>
+            </ul>
+            <p>Merci de nous faire parvenir devis total (avec taxes parc) et procédure réservation.</p>
+            <p>Cordialement,<br>[Votre nom]<br>Tél : +33 6 XX XX XX XX</p>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- BUDGET IMPRÉVU -->
+    <!-- ============================================== -->
+    <h2>📦 BUDGET IMPRÉVU (10% = 182 €)</h2>
+    <div class="conseil">
+        <p><strong>Montant à prévoir en liquide (DA) sur place :</strong> 51 081 DA ≈ 182 €</p>
+        <p><strong>Utilisations possibles :</strong></p>
+        <ul>
+            <li>Panne véhicule (pièce, dépannage express) : 20 000 DA</li>
+            <li>Médicament imprévu (consultation pharmacie) : 5 000 DA</li>
+            <li>Nuit supplémentaire si retard (hôtel Plan B) : 12 000 DA</li>
+            <li>Excursion imprévue (ex: rando plateau Djanet) : 5 000 DA</li>
+            <li>Petits achats souvenirs urgents : 5 000 DA</li>
+            <li>Taxi/transport local si besoin : 3 000 DA</li>
+            <li>Recharge eau/essence imprévue : 1 000 DA</li>
+        </ul>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- MODE DE PAIEMENT PAR POSTE -->
+    <!-- ============================================== -->
+    <h2>💳 MODE DE PAIEMENT PAR POSTE</h2>
+    <table>
+        <tr>
+            <th>Poste</th>
+            <th>Montant €</th>
+            <th>Mode paiement</th>
+            <th>Échéance</th>
+        </tr>
+        <tr><td>Hôtels (réservation)</td><td>602 €</td><td>Carte bancaire (Booking) ou virement</td><td>Février 2026</td></tr>
+        <tr><td>Location véhicule</td><td>2 300 €</td><td>Carte bancaire (agence)</td><td>Février 2026</td></tr>
+        <tr class="warning"><td>Repas (en DA)</td><td>950 €</td><td><strong>LIQUIDE DA uniquement</strong></td><td>Sur place (19 jours)</td></tr>
+        <tr class="warning"><td>Carburant (DA)</td><td>84 €</td><td><strong>LIQUIDE DA</strong></td><td>Sur place</td></tr>
+        <tr class="warning"><td>Activités DA</td><td>179 €</td><td><strong>LIQUIDE DA</strong></td><td>Mars (Djanet) + avril</td></tr>
+        <tr style="background:#fff3cd;"><td><strong>Imprévu</strong></td><td><strong>182 €</strong></td><td><strong>LIQUIDE DA</strong></td><td>Sur place</td></tr>
+    </table>
+
+    <!-- ============================================== -->
+    <!-- CHECKLIST RÉSERVATIONS À FAIRE -->
+    <!-- ============================================== -->
+    <h2>✅ CHECKLIST RÉSERVATIONS À FAIRE (février 2026)</h2>
+    
+    <div class="important">
+        <h3>🔴 Priorité 1 : URGENT (cette semaine)</h3>
+        <ul>
+            <li>☐ Réservation véhicule 4x4 5 places (20 jours) – <strong>Hertz / Avis / Sahara Location</strong></li>
+            <li>☐ <strong>Hotel Tahat (Tamanrasset)</strong> – 3 nuits (J5-J7) – +213 29 71 73 00</li>
+            <li>☐ <strong>Hotel Zeribas (Djanet)</strong> – 4 nuits (J8-J11) – +213 29 71 00 00</li>
+            <li>☐ <strong>Hotel El-Bey (Ouargla)</strong> – 2 nuits (J15-J16) – +213 29 71 23 45</li>
+        </ul>
+    </div>
+
+    <div class="conseil">
+        <h3>🟡 Priorité 2 : Mi-février 2026</h3>
+        <ul>
+            <li>☐ Hotel El-Djazair (Ghardaïa) – 2 nuits</li>
+            <li>☐ Hotel Vescera (Biskra) – 1 nuit</li>
+            <li>☐ Hotel Ayanis (In Amenas) – 1 nuit</li>
+            <li>☐ Dar Dhiaf (Illizi) – 2 nuits</li>
+            <li>☐ Hotel Hercules (Laghouat) – 1 nuit</li>
+            <li>☐ Hotel Zeribat (In Salah) – 1 nuit</li>
+        </ul>
+    </div>
+
+    <div class="conseil">
+        <h3>🟢 Priorité 3 : Fin février 2026 (Djanet CRITIQUE)</h3>
+        <ul>
+            <li>☐ <strong>Contacter Ihaket Travels / guide local Djanet</strong></li>
+            <li>☐ Réserver circuit 2 jours Tassili (31/03 & 01/04)</li>
+            <li>☐ Obtenir devis écrit et confirmer réservation</li>
+            <li>☐ Verser acompte si demandé</li>
+        </ul>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- NUMÉROS URGENCES -->
+    <!-- ============================================== -->
+    <h2>📞 NUMÉROS URGENCES À NOTER</h2>
+    <div class="important">
+        <p><strong>À sauvegarder dans tous les téléphones :</strong></p>
+        <ul>
+            <li>🔴 <strong>Assistance location véhicule :</strong> [numéro à noter après location]</li>
+            <li>🔴 <strong>Hôtel Tahat (Tamanrasset) :</strong> +213 29 71 73 00</li>
+            <li>🔴 <strong>Hôtel Zeribas (Djanet) :</strong> +213 29 71 00 00</li>
+            <li>🔴 <strong>Hôtel El-Bey (Ouargla) :</strong> +213 29 71 23 45</li>
+            <li>🟡 <strong>Ambassade France Alger :</strong> +213 23 48 50 00</li>
+            <li>🟡 <strong>Police secours :</strong> 17 (Algérie)</li>
+            <li>🟡 <strong>Gendarmerie :</strong> 1055</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <p><strong>Road Trip Algérie 2026 – Étape 5 : Budget & Réservations</strong><br>
+        Mise à jour février 2026 • Style harmonisé avec itinéraire final</p>
+        <p style="font-size:12px;">Total sur place : 2 007 € (dont 182 € imprévu) | Location : 2 300 €</p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Road Trip Algérie 2026 – Étape 8 • Planning détaillé (harmonisé)</title>
+    <style>
+        /* ===== STYLE IDENTIQUE AU FICHIER RÉCAP / ÉTAPE 2 ===== */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 40px;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            max-width: 1200px;
+            margin: auto;
+        }
+        h1 {
+            color: #d32f2f;
+            border-bottom: 3px solid #d32f2f;
+            padding-bottom: 10px;
+            text-align: center;
+            font-size: 28px;
+        }
+        h2 {
+            color: #1976d2;
+            margin-top: 30px;
+            border-left: 5px solid #1976d2;
+            padding-left: 15px;
+            font-size: 22px;
+        }
+        h3 {
+            color: #388e3c;
+            margin-top: 25px;
+            font-size: 18px;
+        }
+        h4 {
+            color: #ff9800;
+            margin-top: 20px;
+            border-left: 3px solid #ff9800;
+            padding-left: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-size: 13px;
+        }
+        th {
+            background: #1976d2;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        .repos {
+            background: #fff3cd !important;
+            font-weight: bold;
+            color: #856404;
+        }
+        .visite {
+            background: #d4edda !important;
+            color: #155724;
+        }
+        .route {
+            background: #f8f9fa;
+        }
+        .important {
+            background: #f8d7da;
+            padding: 15px;
+            border-left: 5px solid #dc3545;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .conseil {
+            background: #d1ecf1;
+            padding: 15px;
+            border-left: 5px solid #17a2b8;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .budget-box {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 2px solid #4caf50;
+        }
+        .programme-detail {
+            background: #fff;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #1976d2;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .date-col {
+            white-space: nowrap;
+            font-weight: bold;
+        }
+        .update-box {
+            background: #e3f2fd;
+            padding: 20px;
+            border-left: 5px solid #2196f3;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #1976d2;
+            color: #666;
+            font-size: 14px;
+        }
+        .etoiles {
+            color: #ffa500;
+            font-size: 16px;
+        }
+
+        /* classes spécifiques étape 8 */
+        .day-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            border: 1px solid #e9ecef;
+            overflow: hidden;
+        }
+        .day-header {
+            background: linear-gradient(135deg, #1976d2 0%, #2196f3 100%);
+            color: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .day-header.warning {
+            background: linear-gradient(135deg, #b71c1c 0%, #d32f2f 100%);
+        }
+        .day-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .day-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .day-meta span {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        .day-content {
+            padding: 25px;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+        }
+        .legend-green { background-color: #d4edda; border: 2px solid #28a745; }
+        .legend-yellow { background-color: #fff3cd; border: 2px solid #ffc107; }
+        .legend-red { background-color: #f8d7da; border: 2px solid #dc3545; }
+        .option-green { background-color: #d4edda; }
+        .option-yellow { background-color: #fff3cd; }
+        .option-red { background-color: #f8d7da; }
+        .difficulty {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .difficulty-1 { background: #d4edda; color: #155724; }
+        .difficulty-2 { background: #fff3cd; color: #856404; }
+        .difficulty-3 { background: #ffe5b4; color: #8a6d3b; }
+        .difficulty-4 { background: #f8d7da; color: #721c24; }
+        .difficulty-5 { background: #dc3545; color: white; }
+        .star { color: #ffc107; font-weight: bold; }
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        .schedule-table th {
+            background: #1976d2;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        .schedule-table td {
+            padding: 12px 10px;
+            border: 1px solid #dee2e6;
+        }
+        .recap-table td.green-bg { background-color: #d4edda; }
+        .recap-table td.yellow-bg { background-color: #fff3cd; }
+        .recap-table td.red-bg { background-color: #f8d7da; }
+    </style>
+<base target="_blank">
+</head>
+<body>
+<div class="container">
+    <h1>📅 ÉTAPE 8 – PLANNING JOUR PAR JOUR DÉTAILLÉ<br>〈 mise à jour 2026 〉</h1>
+    <p style="text-align:center; font-size:16px; color:#666; margin-bottom:30px;">
+        <strong>19 jours sur place • 4 750 km • 3 options par jour (vert/jaune/rouge)</strong><br>
+        Priorité confort et adaptation à la fatigue d'Ahmed (75 ans)
+    </p>
+
+    <!-- RAPPEL MODIFICATIONS -->
+    <div class="update-box">
+        <strong>✅ MIS À JOUR SELON ITINÉRAIRE 2026 :</strong><br>
+        • <strong>Suppression Hassi Messaoud</strong> → remplacé par <strong>Ouargla (2 nuits)</strong><br>
+        • <strong>Biskra : 1 nuit</strong> (au lieu de 2)<br>
+        • Distances ajustées (4 750 km) • Horaires recalculés<br>
+        • Nouveau tronçon J15 : In Amenas → Ouargla (760 km)
+    </div>
+
+    <!-- LÉGENDE -->
+    <div class="legend">
+        <div class="legend-item"><span class="legend-color legend-green"></span> 🟢 <strong>Option "On va bien"</strong> – Programme complet</div>
+        <div class="legend-item"><span class="legend-color legend-yellow"></span> 🟡 <strong>Option "Fatigue modérée"</strong> – Version allégée</div>
+        <div class="legend-item"><span class="legend-color legend-red"></span> 🔴 <strong>Option "Repos nécessaire"</strong> – Minimum vital</div>
+        <div class="legend-item"><span class="star">⭐</span> <strong>Incontournable</strong> – À faire si possible</div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- J0 -->
+    <!-- ============================================== -->
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title"><i class="fas fa-plane-departure"></i> J0 – Samedi 21 mars 2026</div>
+            <div class="day-meta"><span><i class="fas fa-flag"></i> DÉPART FRANCE</span></div>
+        </div>
+        <div class="day-content">
+            <table class="schedule-table">
+                <tr><th>Heure</th><th>Activité</th><th>Détail</th></tr>
+                <tr><td>Variable</td><td>Vol France → Algérie</td><td>Selon billetterie</td></tr>
+                <tr><td>Soir</td><td>Arrivée Ibazizen</td><td>Installation, dîner famille, briefing final</td></tr>
+            </table>
+            <div class="conseil"><strong>Préparation soir J0 :</strong> Vérifier sacs, charger batteries, remplir gourdes</div>
+        </div>
+    </div>
+
+    <!-- J1 -->
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title"><i class="fas fa-road"></i> J1 – Dimanche 22 mars</div>
+            <div class="day-meta">
+                <span><i class="fas fa-route"></i> IBAZIZEN → LAGHOUAT</span>
+                <span><i class="fas fa-tachometer-alt"></i> 550 km</span>
+                <span><i class="fas fa-user"></i> Ali (6h30)</span>
+                <span class="difficulty difficulty-2">⭐⭐ Facile</span>
+            </div>
+        </div>
+        <div class="day-content">
+            <table class="schedule-table">
+                <tr><th>Heure</th><th>Activité</th><th>Détail</th><th>Option Fatigue</th></tr>
+                <tr><td>06:00</td><td>🌅 Lever</td><td>Petit déjeuner léger</td><td>Même horaire</td></tr>
+                <tr><td>06:30</td><td>Départ</td><td>RN12 puis Autoroute Est-Ouest</td><td>-</td></tr>
+                <tr><td>10:00</td><td>Pause</td><td>Café Bouira (30 min)</td><td>-</td></tr>
+                <tr><td>13:00</td><td>Pause déjeuner</td><td>Aire autoroute (45 min)</td><td>🥪 Sandwich</td></tr>
+                <tr><td>13:00</td><td>Arrivée Laghouat</td><td>Hotel Hercules</td><td>-</td></tr>
+                <tr class="option-green"><td>15:00-17:00</td><td>⭐ Option A : Visite centre ancien + palmeraie</td><td>2h marche douce</td><td>🟢 Programme complet</td></tr>
+                <tr class="option-yellow"><td>15:00-17:00</td><td>Option B : Repos hôtel</td><td>Récupération</td><td>🟡 Fatigue modérée</td></tr>
+                <tr><td>19:30</td><td>Dîner</td><td>Restaurant hôtel</td><td>-</td></tr>
+                <tr><td>21:00</td><td>Coucher</td><td>-</td><td>-</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- J2 -->
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title">J2 – Lundi 23 mars</div>
+            <div class="day-meta">
+                <span><i class="fas fa-route"></i> LAGHOUAT → GHARDAÏA</span>
+                <span><i class="fas fa-tachometer-alt"></i> 200 km</span>
+                <span><i class="fas fa-user"></i> Jean (2h30)</span>
+                <span class="difficulty difficulty-1">⭐ Très facile</span>
+            </div>
+        </div>
+        <div class="day-content">
+            <table class="schedule-table">
+                <tr><th>Heure</th><th>Activité</th><th>Détail</th><th>Option Fatigue</th></tr>
+                <tr><td>08:00</td><td>Lever</td><td>Petit déjeuner hôtel</td><td>08:30</td></tr>
+                <tr><td>09:00</td><td>Départ</td><td>RN46</td><td>-</td></tr>
+                <tr><td>11:30</td><td>Arrivée Ghardaïa</td><td>Hotel El-Djazair</td><td>-</td></tr>
+                <tr><td>12:00</td><td>Déjeuner</td><td>Restaurant centre</td><td>-</td></tr>
+                <tr><td>13:00-16:00</td><td>⭐ SIESTE OBLIGATOIRE</td><td>Climatisation</td><td>🔴 Repos total</td></tr>
+                <tr class="option-green"><td>16:00-18:00</td><td>⭐ Option A : Marché couvert + ksar</td><td>1h30 découverte</td><td>🟢 Programme complet</td></tr>
+                <tr class="option-yellow"><td>16:00-18:00</td><td>Option B : Terrasse hôtel</td><td>Vue ksar</td><td>🟡 Fatigue modérée</td></tr>
+                <tr><td>19:30</td><td>Dîner</td><td>Spécialité M'Zab</td><td>-</td></tr>
+                <tr><td>21:00</td><td>Coucher</td><td>-</td><td>-</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- J3 -->
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title">J3 – Mardi 24 mars</div>
+            <div class="day-meta">
+                <span><i class="fas fa-city"></i> GHARDAÏA (REPOS ACTIF)</span>
+                <span class="difficulty difficulty-2">⭐⭐ Marche lente</span>
+            </div>
+        </div>
+        <div class="day-content">
+            <div class="important"><i class="fas fa-exclamation-triangle"></i> ⚠️ ATTENTION AHMED : Marche sur pierres irrégulières – canne indispensable</div>
+            <table class="schedule-table">
+                <tr><th>Heure</th><th>Activité</th><th>Détail</th><th>Option Fatigue</th></tr>
+                <tr><td>07:00</td><td>Lever</td><td>Petit déjeuner</td><td>08:00</td></tr>
+                <tr class="option-green"><td>08:30-11:00</td><td>⭐ VISITE KSARS</td><td>Beni Isguen + El Ateuf (2km)</td><td>🟢 Programme complet</td></tr>
+                <tr class="option-yellow"><td>08:30-11:00</td><td>Option B : Visite en voiture</td><td>Arrêts courts</td><td>🟡 Fatigue modérée</td></tr>
+                <tr><td>11:00-12:00</td><td>Marché aux tapis</td><td>Achats souvenirs</td><td>🔴 Dahbia + Ali seuls</td></tr>
+                <tr><td>12:30</td><td>Déjeuner</td><td>-</td><td>-</td></tr>
+                <tr><td>14:00-17:00</td><td>⭐ SIESTE OBLIGATOIRE</td><td>-</td><td>🔴 Repos total</td></tr>
+                <tr class="option-green"><td>17:00-19:00</td><td>⭐ Option A : Ksar Melika + coucher soleil</td><td>-</td><td>🟢 Programme complet</td></tr>
+                <tr class="option-yellow"><td>17:00-19:00</td><td>Option B : Terrasse hôtel</td><td>-</td><td>🟡 Fatigue modérée</td></tr>
+                <tr><td>19:30</td><td>Dîner</td><td>-</td><td>-</td></tr>
+                <tr><td>21:00</td><td>Coucher</td><td>-</td><td>-</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- J4 -->
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title">J4 – Mercredi 25 mars</div>
+            <div class="day-meta">
+                <span><i class="fas fa-route"></i> GHARDAÏA → IN SALAH</span>
+                <span><i class="fas fa-tachometer-alt"></i> 550 km</span>
+                <span><i class="fas fa-user"></i> Ali (7h30)</span>
+                <span class="difficulty difficulty-3">⭐⭐⭐ Longue, monotone</span>
+            </div>
+        </div>
+        <div class="day-content">
+            <table class="schedule-table">
+                <tr><th>Heure</th><th>Activité</th><th>Détail</th><th>Option Fatigue</th></tr>
+                <tr><td>05:30</td><td>Lever</td><td>Petit déjeuner express</td><td>06:00</td></tr>
+                <tr><td>06:00</td><td>Départ</td><td>RN1 direct</td><td>-</td></tr>
+                <tr><td>09:00</td><td>Pause</td><td>El Menia (20 min)</td><td>-</td></tr>
+                <tr><td>12:00</td><td>Pique-nique</td><td>RN1, ombre rare</td><td>Sandwichs</td></tr>
+                <tr><td>14:00</td><td>Arrivée In Salah</td><td>Hotel Zeribat</td><td>-</td></tr>
+                <tr><td>14:30-19:00</td><td>⭐ REPOS TOTAL</td><td>Climatisation</td><td>🔴 Obligatoire</td></tr>
+                <tr><td>19:00</td><td>Dîner</td><td>Hôtel</td><td>-</td></tr>
+                <tr><td>20:00</td><td>Coucher</td><td>Préparation J5</td><td>-</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- J5 – CRITIQUE -->
+    <div class="day-card">
+        <div class="day-header warning">
+            <div class="day-title"><i class="fas fa-exclamation-triangle"></i> J5 – Jeudi 26 mars</div>
+            <div class="day-meta">
+                <span><i class="fas fa-route"></i> IN SALAH → TAMANRASSET</span>
+                <span><i class="fas fa-tachometer-alt"></i> 700 km</span>
+                <span><i class="fas fa-user"></i> Jean (10h)</span>
+                <span class="difficulty difficulty-4">⭐⭐⭐⭐ Très long</span>
+            </div>
+        </div>
+        <div class="day-content">
+            <div class="important"><i class="fas fa-exclamation-triangle"></i> ⚠️ JOURNÉE TRÈS DURE – Surveillance Ahmed maximale</div>
+            <table class="schedule-table">
+                <tr><th>Heure</th><th>Activité</th><th>Détail</th><th>Option Fatigue</th></tr>
+                <tr><td>04:30</td><td>Lever</td><td>Petit déjeuner veille</td><td>05:00</td></tr>
+                <tr><td>05:00</td><td>Départ</td><td>Nuit noire, température idéale</td><td>-</td></tr>
+                <tr><td>08:00</td><td>Lever soleil</td><td>Pause photos Hoggar</td><td>-</td></tr>
+                <tr><td>09:00</td><td>Pause</td><td>Amsel (café)</td><td>-</td></tr>
+                <tr><td>11:00</td><td>Pique-nique</td><td>Oued, ombre rochers</td><td>-</td></tr>
+                <tr><td>15:00</td><td>Arrivée Tamanrasset</td><td>Hotel Tahat</td><td>-</td></tr>
+                <tr><td>15:30-19:00</td><td>⭐ REPOS TOTAL ABSOLU</td><td>Sieste climatisation</td><td>🔴 Obligatoire</td></tr>
+                <tr><td>19:00</td><td>Dîner</td><td>Restaurant centre</td><td>-</td></tr>
+                <tr class="option-green"><td>20:30</td><td>⭐ Option A : Marché nocturne</td><td>30 min</td><td>🟢 Programme complet</td></tr>
+                <tr class="option-yellow"><td>20:30</td><td>Option B : Hôtel</td><td>-</td><td>🟡 Fatigue modérée</td></tr>
+                <tr><td>21:30</td><td>Coucher</td><td>Préparation J6 (5h)</td><td>-</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- J6 -->
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title">J6 – Vendredi 27 mars</div>
+            <div class="day-meta">
+                <span><i class="fas fa-mountain"></i> TAMANRASSET – VISITES</span>
+                <span><i class="fas fa-4x4"></i> 110 km</span>
+                <span class="difficulty difficulty-3">⭐⭐⭐ Altitude 2700m</span>
+            </div>
+        </div>
+        <div class="day-content">
+            <div class="important"><i class="fas fa-stethoscope"></i> ⚠️ DÉCISION 5h30 : Jean évalue Ahmed – si trop fatigué → annuler Assekrem</div>
+            <table class="schedule-table">
+                <tr><th>Heure</th><th>Activité</th><th>Détail</th><th>Option Fatigue</th></tr>
+                <tr><td>05:00</td><td>Lever</td><td>Petit déjeuner express</td><td>-</td></tr>
+                <tr><td>05:30</td><td>Départ 4x4</td><td>Location locale</td><td>-</td></tr>
+                <tr class="option-green"><td>07:30-09:00</td><td>⭐ PLATEFORME ASSEKREM</td><td>Vue panoramique Hoggar</td><td>🟢 Programme complet</td></tr>
+                <tr class="option-yellow"><td>07:30-09:00</td><td>Option B : Rester 4x4 (vent froid)</td><td>-</td><td>🟡 Fatigue modérée</td></tr>
+                <tr class="option-green"><td>09:30-11:00</td><td>⭐ TOMBEAU TIN HINAN</td><td>Marche 500m</td><td>🟢 Programme complet</td></tr>
+                <tr class="option-red"><td>09:30-11:00</td><td>Option C : Ahmed reste 4x4</td><td>-</td><td>🔴 Repos nécessaire</td></tr>
+                <tr><td>11:00</td><td>Retour hôtel</td><td>-</td><td>-</td></tr>
+                <tr><td>12:00</td><td>Déjeuner</td><td>-</td><td>-</td></tr>
+                <tr><td>13:00-17:00</td><td>⭐ SIESTE</td><td>-</td><td>🔴 Obligatoire</td></tr>
+                <tr><td>17:00-19:00</td><td>⭐ MUSÉE DU HOGGAR</td><td>Climatisé, pas de marche</td><td>🟡 Si Ahmed fatigué : Ali seul</td></tr>
+                <tr><td>19:30</td><td>Dîner</td><td>-</td><td>-</td></tr>
+                <tr><td>21:00</td><td>Coucher</td><td>-</td><td>-</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- J7 -->
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title">J7 – Samedi 28 mars</div>
+            <div class="day-meta">
+                <span><i class="fas fa-umbrella-beach"></i> TAMANRASSET (REPOS)</span>
+                <span class="difficulty difficulty-1">⭐ Récupération</span>
+            </div>
+        </div>
+        <div class="day-content">
+            <table class="schedule-table">
+                <tr><th>Heure</th><th>Activité</th><th>Détail</th><th>Option Fatigue</th></tr>
+                <tr><td>08:00</td><td>Lever</td><td>Repos récupération</td><td>09:00</td></tr>
+                <tr><td>09:00-10:00</td><td>Petit déjeuner tardif</td><td>-</td><td>-</td></tr>
+                <tr class="option-green"><td>10:00-12:00</td><td>⭐ Option A : Marché artisanal</td><td>Achats souvenirs</td><td>🟢 Programme complet</td></tr>
+                <tr class="option-yellow"><td>10:00-12:00</td><td>Option B : Dahbia + Ali seuls</td><td>-</td><td>🟡 Fatigue modérée</td></tr>
+                <tr><td>12:00</td><td>Déjeuner</td><td>-</td><td>-</td></tr>
+                <tr><td>13:00-17:00</td><td>⭐ SIESTE</td><td>-</td><td>🔴 Repos total</td></tr>
+                <tr class="option-green"><td>17:00-19:00</td><td>⭐ Option A : Vallée Igharghar</td><td>Marche 2km douce</td><td>🟢 Programme complet</td></tr>
+                <tr class="option-yellow"><td>17:00-19:00</td><td>Option B : Terrasse hôtel</td><td>-</td><td>🟡 Fatigue modérée</td></tr>
+                <tr><td>19:30</td><td>Dîner</td><td>-</td><td>-</td></tr>
+                <tr><td>21:00</td><td>Coucher</td><td>Préparation J8 (très dur)</td><td>-</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- J8 – CRITIQUE -->
+    <div class="day-card">
+        <div class="day-header warning">
+            <div class="day-title">J8 – Dimanche 29 mars</div>
+            <div class="day-meta">
+                <span><i class="fas fa-route"></i> TAMANRASSET → DJANET</span>
+                <span><i class="fas fa-tachometer-alt"></i> 700 km</span>
+                <span><i class="fas fa-user"></i> Ali (13-14h)</span>
+                <span class="difficulty difficulty-5">⭐⭐⭐⭐⭐ Extrême</span>
+            </div>
+        </div>
+        <div class="day-content">
+            <div class="important"><i class="fas fa-exclamation-triangle"></i> ⚠️ PLAN B : Si trop fatigués J7 soir → couper en 2, nuit à Tin Zaouatene (basique)</div>
+            <table class="schedule-table">
+                <tr><th>Heure</th><th>Activité</th><th>Détail</th><th>Option Fatigue</th></tr>
+                <tr><td>04:00</td><td>Lever</td><td>Petit déjeuner veille</td><td>04:30</td></tr>
+                <tr><td>04:30</td><td>Départ</td><td>Nuit noire impérative</td><td>-</td></tr>
+                <tr><td>07:00</td><td>Lever soleil</td><td>Pause petit-déj route</td><td>-</td></tr>
+                <tr><td>10:00</td><td>Tin Zaouatene</td><td>Passer direct si possible</td><td>-</td></tr>
+                <tr><td>13:00</td><td>Pique-nique</td><td>Piste</td><td>-</td></tr>
+                <tr><td>19:00</td><td>Arrivée Djanet</td><td>Hotel Zeribas</td><td>-</td></tr>
+                <tr><td>19:30-? </td><td>⭐ REPOS TOTAL</td><td>-</td><td>🔴 Obligatoire</td></tr>
+                <tr><td>20:00</td><td>Dîner léger</td><td>Hôtel</td><td>-</td></tr>
+                <tr><td>21:30</td><td>Coucher</td><td>-</td><td>-</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- J9 -->
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title">J9 – Lundi 30 mars</div>
+            <div class="day-meta">
+                <span><i class="fas fa-desert"></i> DJANET (REPOS)</span>
+                <span class="difficulty difficulty-1">⭐ Récupération</span>
+            </div>
+        </div>
+        <div class="day-content">
+            <table class="schedule-table">
+                <tr><th>Heure</th><th>Activité</th><th>Détail</th><th>Option Fatigue</th></tr>
+                <tr><td>08:00</td><td>Lever</td><td>Repos</td><td>-</td></tr>
+                <tr><td>09:00-10:00</td><td>Petit déjeuner</td><td>-</td><td>-</td></tr>
+                <tr><td>10:00-12:00</td><td>⭐ Contact Ihaket Travels</td><td>Confirmation circuits J10-J11</td><td>-</td></tr>
+                <tr><td>12:00</td><td>Déjeuner</td><td>-</td><td>-</td></tr>
+                <tr><td>13:00-17:00</td><td>⭐ SIESTE</td><td>-</td><td>🔴 Repos total</td></tr>
+                <tr class="option-green"><td>17:00-19:00</td><td>⭐ Option A : Centre-ville + jardin</td><td>Découverte</td><td>🟢 Programme complet</td></tr>
+                <tr class="option-yellow"><td>17:00-19:00</td><td>Option B : Hôtel</td><td>-</td><td>🟡 Fatigue modérée</td></tr>
+                <tr><td>19:30</td><td>Dîner</td><td>-</td><td>-</td></tr>
+                <tr><td>21:00</td><td>Coucher</td><td>Préparation J10 (5h30)</td><td>-</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- J10 -->
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title">J10 – Mardi 31 mars</div>
+            <div class="day-meta">
+                <span><i class="fas fa-mountain"></i> DJANET – CIRCUIT 1</span>
+                <span class="difficulty difficulty-3">⭐⭐⭐ Marche + chaleur</span>
+            </div>
+        </div>
+        <div class="day-content">
+            <table class="schedule-table">
+                <tr><th>Heure</th><th>Activité</th><th>Détail</th><th>Option Fatigue</th></tr>
+                <tr><td>05:30</td><td>Lever</td><td>Petit déjeuner express</td><td>-</td></tr>
+                <tr><td>06:00</td><td>Départ 4x4</td><td>Guide Ihaket</td><td>-</td></tr>
+                <tr class="option-green"><td>07:00-09:00</td><td>⭐ SEFAR</td><td>"La Grande Dame", peintures</td><td>🟢 Programme complet</td></tr>
+                <tr class="option-yellow"><td>07:00-09:00</td><td>Option B : Vue entrée</td><td>-</td><td>🟡 Fatigue modérée</td></tr>
+                <tr class="option-green"><td>09:30-10:30</td><td>⭐ TIN TAZARIFT</td><td>Girafes, éléphants</td><td>🟢 Programme complet</td></tr>
+                <tr class="option-red"><td>09:30-10:30</td><td>Option C : Ahmed reste 4x4</td><td>-</td><td>🔴 Repos nécessaire</td></tr>
+                <tr><td>11:00</td><td>Retour hôtel</td><td>-</td><td>-</td></tr>
+                <tr><td>12:00</td><td>Déjeuner</td><td>-</td><td>-</td></tr>
+                <tr><td>13:00-17:00</td><td>⭐ SIESTE CLIM</td><td>-</td><td>🔴 Obligatoire</td></tr>
+                <tr class="option-green"><td>17:00</td><td>⭐ Option A : Erg Admer (coucher soleil)</td><td>Dunes rouges</td><td>🟢 Programme complet</td></tr>
+                <tr class="option-yellow"><td>17:00</td><td>Option B : Si Ahmed fatigué : Ali seul</td><td>-</td><td>🟡 Fatigue modérée</td></tr>
+                <tr><td>19:30</td><td>Dîner</td><td>-</td><td>-</td></tr>
+                <tr><td>21:00</td><td>Coucher</td><td>-</td><td>-</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- J11 -->
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title">J11 – Mercredi 1er avril</div>
+            <div class="day-meta">
+                <span><i class="fas fa-mountain"></i> DJANET – CIRCUIT 2</span>
+                <span class="difficulty difficulty-3">⭐⭐⭐ Même niveau</span>
+            </div>
+        </div>
+        <div class="day-content">
+            <div class="important"><i class="fas fa-exclamation-triangle"></i> ⚠️ DÉCISION J10 SOIR : Si Ahmed épuisé → annuler J11 matin, garder Erg soir</div>
+            <table class="schedule-table">
+                <tr><th>Heure</th><th>Activité</th><th>Détail</th><th>Option Fatigue</th></tr>
+                <tr><td>05:30</td><td>Lever</td><td>-</td><td>-</td></tr>
+                <tr><td>06:00</td><td>Départ 4x4</td><td>-</td><td>-</td></tr>
+                <tr class="option-green"><td>07:00-10:00</td><td>⭐ JABBAREN</td><td>Architecture rupestre majeure</td><td>🟢 Programme complet</td></tr>
+                <tr class="option-yellow"><td>07:00-10:00</td><td>Option B : Circuit court</td><td>-</td><td>🟡 Fatigue modérée</td></tr>
+                <tr><td>10:30</td><td>Retour hôtel</td><td>-</td><td>-</td></tr>
+                <tr><td>11:00</td><td>Déjeuner</td><td>-</td><td>-</td></tr>
+                <tr><td>12:00-16:30</td><td>⭐ REPOS TOTAL</td><td>-</td><td>🔴 Obligatoire</td></tr>
+                <tr><td>16:30</td><td>Préparation soirée</td><td>Vêtements chauds</td><td>-</td></tr>
+                <tr class="option-green"><td>17:00-19:00</td><td>⭐ ERG ADMER + DÎNER TOUAREG</td><td>Moment émotion</td><td>🟢 Programme complet</td></tr>
+                <tr class="option-yellow"><td>17:00-19:00</td><td>Option B : Erg seul</td><td>-</td><td>🟡 Fatigue modérée</td></tr>
+                <tr class="option-red"><td>19:00-20:30</td><td>Option C : Dîner hôtel</td><td>-</td><td>🔴 Repos nécessaire</td></tr>
+                <tr><td>21:00</td><td>Retour hôtel</td><td>-</td><td>-</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- J12 -->
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title">J12 – Jeudi 2 avril</div>
+            <div class="day-meta">
+                <span><i class="fas fa-route"></i> DJANET → ILLIZI</span>
+                <span><i class="fas fa-tachometer-alt"></i> 390 km</span>
+                <span><i class="fas fa-user"></i> Jean (6h30)</span>
+                <span class="difficulty difficulty-3">⭐⭐⭐ Pistes possibles</span>
+            </div>
+        </div>
+        <div class="day-content">
+            <table class="schedule-table">
+                <tr><th>Heure</th><th>Activité</th><th>Détail</th><th>Option Fatigue</th></tr>
+                <tr><td>06:30</td><td>Lever</td><td>Petit déjeuner</td><td>07:30</td></tr>
+                <tr><td>07:30</td><td>Départ</td><td>N3</td><td>-</td></tr>
+                <tr><td>10:00</td><td>Pause</td><td>Paysage Tassili</td><td>-</td></tr>
+                <tr><td>12:00</td><td>Pique-nique</td><td>-</td><td>-</td></tr>
+                <tr><td>14:00</td><td>Arrivée Illizi</td><td>Dar Dhiaf</td><td>-</td></tr>
+                <tr><td>14:30-17:00</td><td>⭐ REPOS</td><td>-</td><td>🔴 Repos total</td></tr>
+                <tr class="option-green"><td>17:00-19:00</td><td>⭐ Option A : Marché touareg + centre</td><td>-</td><td>🟢 Programme complet</td></tr>
+                <tr class="option-yellow"><td>17:00-19:00</td><td>Option B : Terrasse hôtel</td><td>-</td><td>🟡 Fatigue modérée</td></tr>
+                <tr><td>19:30</td><td>Dîner</td><td>-</td><td>-</td></tr>
+                <tr><td>21:00</td><td>Coucher</td><td>-</td><td>-</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- J13 -->
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title">J13 – Vendredi 3 avril</div>
+            <div class="day-meta">
+                <span><i class="fas fa-umbrella-beach"></i> ILLIZI (REPOS)</span>
+                <span class="difficulty difficulty-2">⭐⭐ Optionnel</span>
+            </div>
+        </div>
+        <div class="day-content">
+            <table class="schedule-table">
+                <tr><th>Heure</th><th>Activité</th><th>Détail</th><th>Option Fatigue</th></tr>
+                <tr><td>08:00</td><td>Lever</td><td>-</td><td>09:00</td></tr>
+                <tr class="option-green"><td>09:00-12:00</td><td>⭐ Option A : Tassili Sud (guide)</td><td>Circuit 4x4 3h</td><td>🟢 Programme complet</td></tr>
+                <tr class="option-yellow"><td>09:00-12:00</td><td>Option B : Marché seul</td><td>-</td><td>🟡 Fatigue modérée</td></tr>
+                <tr><td>12:00</td><td>Déjeuner</td><td>-</td><td>-</td></tr>
+                <tr><td>13:00-17:00</td><td>⭐ SIESTE</td><td>-</td><td>🔴 Repos total</td></tr>
+                <tr class="option-green"><td>17:00-19:00</td><td>⭐ Option A : Marché + promenade</td><td>-</td><td>🟢 Programme complet</td></tr>
+                <tr class="option-yellow"><td>17:00-19:00</td><td>Option B : Hôtel</td><td>-</td><td>🟡 Fatigue modérée</td></tr>
+                <tr><td>19:30</td><td>Dîner</td><td>-</td><td>-</td></tr>
+                <tr><td>21:00</td><td>Coucher</td><td>-</td><td>-</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- J14 -->
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title">J14 – Samedi 4 avril</div>
+            <div class="day-meta">
+                <span><i class="fas fa-route"></i> ILLIZI → IN AMENAS</span>
+                <span><i class="fas fa-tachometer-alt"></i> 210 km</span>
+                <span><i class="fas fa-user"></i> Ali (3h)</span>
+                <span class="difficulty difficulty-1">⭐ Très facile</span>
+            </div>
+        </div>
+        <div class="day-content">
+            <table class="schedule-table">
+                <tr><th>Heure</th><th>Activité</th><th>Détail</th><th>Option Fatigue</th></tr>
+                <tr><td>08:00</td><td>Lever</td><td>-</td><td>08:30</td></tr>
+                <tr><td>09:00</td><td>Départ</td><td>N3</td><td>-</td></tr>
+                <tr><td>12:00</td><td>Arrivée In Amenas</td><td>Hotel Ayanis</td><td>-</td></tr>
+                <tr><td>12:30</td><td>Déjeuner</td><td>-</td><td>-</td></tr>
+                <tr><td>13:30-17:00</td><td>⭐ SIESTE</td><td>-</td><td>🔴 Repos total</td></tr>
+                <tr class="option-green"><td>17:00-19:00</td><td>⭐ Option A : Visite zone pétrolière</td><td>Mémorial</td><td>🟢 Programme complet</td></tr>
+                <tr class="option-yellow"><td>17:00-19:00</td><td>Option B : Hôtel</td><td>-</td><td>🟡 Fatigue modérée</td></tr>
+                <tr><td>19:30</td><td>Dîner</td><td>-</td><td>-</td></tr>
+                <tr><td>21:00</td><td>Coucher</td><td>Préparation J15 (départ 4h)</td><td>-</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- J15 – NOUVEAU (In Amenas → Ouargla) -->
+    <div class="day-card">
+        <div class="day-header warning">
+            <div class="day-title">J15 – Dimanche 5 avril</div>
+            <div class="day-meta">
+                <span><i class="fas fa-route"></i> IN AMENAS → OUARGLA</span>
+                <span><i class="fas fa-tachometer-alt"></i> 760 km</span>
+                <span><i class="fas fa-user"></i> Jean (10-11h)</span>
+                <span class="difficulty difficulty-4">⭐⭐⭐⭐ Très long</span>
+            </div>
+        </div>
+        <div class="day-content">
+            <table class="schedule-table">
+                <tr><th>Heure</th><th>Activité</th><th>Détail</th><th>Option Fatigue</th></tr>
+                <tr><td>04:00</td><td>Lever</td><td>Petit déjeuner veille</td><td>04:30</td></tr>
+                <tr><td>04:30</td><td>Départ</td><td>Traversée Grand Erg Oriental</td><td>-</td></tr>
+                <tr><td>08:00</td><td>Pause</td><td>Café route</td><td>-</td></tr>
+                <tr><td>11:00</td><td>Pique-nique</td><td>-</td><td>-</td></tr>
+                <tr><td>15:00</td><td>Arrivée Ouargla</td><td>Hotel El-Bey</td><td>-</td></tr>
+                <tr><td>15:30-19:00</td><td>⭐ REPOS TOTAL</td><td>Piscine, climatisation</td><td>🔴 Obligatoire</td></tr>
+                <tr><td>19:30</td><td>Dîner</td><td>Hôtel</td><td>-</td></tr>
+                <tr><td>21:00</td><td>Coucher</td><td>-</td><td>-</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- J16 – Ouargla (visite) -->
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title">J16 – Lundi 6 avril</div>
+            <div class="day-meta">
+                <span><i class="fas fa-city"></i> OUARGLA (VISITE)</span>
+                <span class="difficulty difficulty-1">⭐ Repos + visite légère</span>
+            </div>
+        </div>
+        <div class="day-content">
+            <table class="schedule-table">
+                <tr><th>Heure</th><th>Activité</th><th>Détail</th><th>Option Fatigue</th></tr>
+                <tr><td>08:00</td><td>Lever</td><td>Repos</td><td>09:00</td></tr>
+                <tr><td>09:00-10:00</td><td>Petit déjeuner</td><td>-</td><td>-</td></tr>
+                <tr class="option-green"><td>10:00-12:00</td><td>⭐ Ksar de Ouargla</td><td>Visite patrimoine</td><td>🟢 Programme complet</td></tr>
+                <tr class="option-yellow"><td>10:00-12:00</td><td>Option B : Piscine hôtel</td><td>-</td><td>🟡 Fatigue modérée</td></tr>
+                <tr><td>12:00</td><td>Déjeuner</td><td>-</td><td>-</td></tr>
+                <tr><td>13:00-17:00</td><td>⭐ SIESTE</td><td>-</td><td>🔴 Repos total</td></tr>
+                <tr class="option-green"><td>17:00-19:00</td><td>⭐ Option A : Palmeraie + marché central</td><td>Fin d'après-midi</td><td>🟢 Programme complet</td></tr>
+                <tr class="option-yellow"><td>17:00-19:00</td><td>Option B : Terrasse hôtel</td><td>-</td><td>🟡 Fatigue modérée</td></tr>
+                <tr><td>19:30</td><td>Dîner</td><td>Spécialité locale</td><td>-</td></tr>
+                <tr><td>21:00</td><td>Coucher</td><td>-</td><td>-</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- J17 – Ouargla → Biskra (1 nuit) -->
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title">J17 – Mardi 7 avril</div>
+            <div class="day-meta">
+                <span><i class="fas fa-route"></i> OUARGLA → BISKRA</span>
+                <span><i class="fas fa-tachometer-alt"></i> 205 km</span>
+                <span><i class="fas fa-user"></i> Ali (3h)</span>
+                <span class="difficulty difficulty-2">⭐⭐ Facile</span>
+            </div>
+        </div>
+        <div class="day-content">
+            <table class="schedule-table">
+                <tr><th>Heure</th><th>Activité</th><th>Détail</th><th>Option Fatigue</th></tr>
+                <tr><td>08:00</td><td>Lever</td><td>-</td><td>08:30</td></tr>
+                <tr><td>09:00</td><td>Départ</td><td>RN3</td><td>-</td></tr>
+                <tr><td>12:00</td><td>Arrivée Biskra</td><td>Hotel Vescera</td><td>-</td></tr>
+                <tr><td>12:30</td><td>Déjeuner</td><td>-</td><td>-</td></tr>
+                <tr><td>13:30-16:00</td><td>⭐ SIESTE</td><td>-</td><td>🔴 Repos total</td></tr>
+                <tr class="option-green"><td>16:00-18:00</td><td>⭐ HAMMAM SALHINE</td><td>Sources chaudes thérapeutiques</td><td>🟢 Programme complet</td></tr>
+                <tr class="option-yellow"><td>16:00-18:00</td><td>Option B : Ahmed reste hôtel</td><td>-</td><td>🟡 Fatigue modérée</td></tr>
+                <tr><td>19:30</td><td>Dîner</td><td>-</td><td>-</td></tr>
+                <tr><td>21:00</td><td>Coucher</td><td>Préparation J18 (départ 6h)</td><td>-</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- J18 – Biskra → Ibazizen -->
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title">J18 – Mercredi 8 avril</div>
+            <div class="day-meta">
+                <span><i class="fas fa-route"></i> BISKRA → IBAZIZEN</span>
+                <span><i class="fas fa-tachometer-alt"></i> 490 km</span>
+                <span><i class="fas fa-user"></i> Jean (6-7h)</span>
+                <span class="difficulty difficulty-3">⭐⭐⭐ Montée Tell</span>
+            </div>
+        </div>
+        <div class="day-content">
+            <table class="schedule-table">
+                <tr><th>Heure</th><th>Activité</th><th>Détail</th><th>Option Fatigue</th></tr>
+                <tr><td>06:00</td><td>Lever</td><td>Petit déjeuner express</td><td>06:30</td></tr>
+                <tr><td>06:30</td><td>Départ</td><td>Via Batna, Sétif</td><td>-</td></tr>
+                <tr><td>09:00</td><td>Pause</td><td>Batna (café)</td><td>-</td></tr>
+                <tr><td>11:00</td><td>Pause</td><td>Sétif</td><td>-</td></tr>
+                <tr><td>13:30</td><td>Arrivée Ibazizen</td><td>Maison familiale</td><td>-</td></tr>
+                <tr><td>14:00</td><td>⭐ DÉJEUNER FAMILLE</td><td>Retour célébration</td><td>-</td></tr>
+                <tr><td>15:00-19:00</td><td>⭐ REPOS TOTAL</td><td>Installation, douche</td><td>🔴 Repos total</td></tr>
+                <tr><td>19:30</td><td>Dîner famille</td><td>-</td><td>-</td></tr>
+                <tr><td>21:00</td><td>Coucher</td><td>-</td><td>-</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- J19 – Repos Ibazizen -->
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title">J19 – Jeudi 9 avril</div>
+            <div class="day-meta">
+                <span><i class="fas fa-home"></i> IBAZIZEN (REPOS)</span>
+            </div>
+        </div>
+        <div class="day-content">
+            <table class="schedule-table">
+                <tr><th>Heure</th><th>Activité</th><th>Détail</th><th>Option Fatigue</th></tr>
+                <tr><td>Libre</td><td>Repos total</td><td>Récupération</td><td>-</td></tr>
+                <tr class="option-green"><td>10:00-12:00</td><td>⭐ Option A : Balade adrar Ibazizen</td><td>Si énergie</td><td>🟢 Programme complet</td></tr>
+                <tr class="option-yellow"><td>10:00-12:00</td><td>Option B : Repos</td><td>-</td><td>🟡 Fatigue modérée</td></tr>
+                <tr><td>17:00</td><td>Dîner famille</td><td>-</td><td>-</td></tr>
+                <tr><td>18:00</td><td>Préparation bagages</td><td>Retour France</td><td>-</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- J20 – Retour France -->
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title">J20 – Vendredi 10 avril</div>
+            <div class="day-meta">
+                <span><i class="fas fa-plane-departure"></i> RETOUR FRANCE</span>
+            </div>
+        </div>
+        <div class="day-content">
+            <table class="schedule-table">
+                <tr><th>Heure</th><th>Activité</th></tr>
+                <tr><td>Matin</td><td>Derniers moments famille</td></tr>
+                <tr><td>12:30</td><td>Départ aéroport</td></tr>
+                <tr><td>Après-midi</td><td>Vol retour France</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- TABLEAU RÉCAPITULATIF DES OPTIONS -->
+    <section>
+        <h2>📊 TABLEAU RÉCAPITULATIF DES OPTIONS</h2>
+        <table class="recap-table">
+            <tr><th>Jour</th><th>Programme Complet 🟢</th><th>Fatigue Modérée 🟡</th><th>Repos Nécessaire 🔴</th></tr>
+            <tr><td>J1</td><td class="green-bg">Visite Laghouat</td><td class="yellow-bg">Repos hôtel</td><td>-</td></tr>
+            <tr><td>J3</td><td class="green-bg">3 ksars + Melika</td><td class="yellow-bg">Ksars en voiture</td><td class="red-bg">1 ksar seul</td></tr>
+            <tr><td>J6</td><td class="green-bg">Assekrem + Tin Hinan</td><td class="yellow-bg">Assekrem seul</td><td class="red-bg">Annuler Assekrem</td></tr>
+            <tr><td>J10</td><td class="green-bg">Sefar + Tazarift + Erg</td><td class="yellow-bg">Sefar seul</td><td class="red-bg">Annuler matin</td></tr>
+            <tr><td>J11</td><td class="green-bg">Jabbaren + dîner touareg</td><td class="yellow-bg">Erg soir seul</td><td class="red-bg">Dîner hôtel</td></tr>
+            <tr><td>J16</td><td class="green-bg">Ksar + palmeraie</td><td class="yellow-bg">Piscine</td><td class="red-bg">Repos total</td></tr>
+            <tr><td>J17</td><td class="green-bg">Hammam Salhine</td><td class="yellow-bg">Ahmed reste</td><td class="red-bg">Annuler hammam</td></tr>
+        </table>
+    </section>
+
+    <div class="footer">
+        <p><strong>Road Trip Algérie 2026 – Étape 8 : Planning jour par jour</strong><br>
+        Mise à jour février 2026 • 19 jours sur place • 4 750 km</p>
+    </div>
+</div>
+</body>
+</html>
