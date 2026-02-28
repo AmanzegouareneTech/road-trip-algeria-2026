@@ -239,13 +239,25 @@ function initMap() {
 
     /* ---------- OSRM routing helpers ---------- */
     async function fetchOSRMRoute(waypoints) {
+        /* Check localStorage cache first */
+        var cacheKey = 'osrm_' + waypoints.map(function (p) { return p[0].toFixed(4) + '_' + p[1].toFixed(4); }).join('__');
+        try {
+            var cached = localStorage.getItem(cacheKey);
+            if (cached) return JSON.parse(cached);
+        } catch (e) { /* ignore */ }
+
         var coords = waypoints.map(function (p) { return p[1] + ',' + p[0]; }).join(';');
         var url = 'https://router.project-osrm.org/route/v1/driving/' + coords + '?overview=full&geometries=geojson';
-        var response = await fetch(url);
+        var response = await fetch(url, { signal: AbortSignal.timeout(10000) });
         if (!response.ok) throw new Error('HTTP ' + response.status + ': ' + response.statusText);
         var data = await response.json();
         if (data.code === 'Ok' && data.routes.length > 0) {
-            return data.routes[0].geometry.coordinates.map(function (c) { return [c[1], c[0]]; });
+            var latLngs = data.routes[0].geometry.coordinates.map(function (c) { return [c[1], c[0]]; });
+            /* Cache the result for next visit */
+            try {
+                localStorage.setItem(cacheKey, JSON.stringify(latLngs));
+            } catch (e) { /* ignore - localStorage might be full */ }
+            return latLngs;
         }
         throw new Error(data.code || 'No route');
     }

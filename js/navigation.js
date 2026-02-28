@@ -9,7 +9,6 @@ function initNavigation(activePage) {
     const pages = [
         { href: 'index.html', icon: 'fa-map-location-dot', label: 'Carte interactive', num: null },
         { href: 'Recapitulatif-Contexte.html', icon: 'fa-clipboard-list', label: 'Récapitulatif', num: '0' },
-        { href: '1-PlanParticipants.html', icon: 'fa-users', label: 'Participants', num: '1' },
         { href: '2-Itineraire.html', icon: 'fa-route', label: 'Itinéraire', num: '2' },
         { href: '3-Vehicule-Location.html', icon: 'fa-car-side', label: 'Véhicule & Location', num: '3' },
         { href: '4-Hebergement-Hotels-Resa.html', icon: 'fa-hotel', label: 'Hébergement', num: '4' },
@@ -26,12 +25,14 @@ function initNavigation(activePage) {
         return `<a href="${p.href}" class="${isActive}">${numSpan} ${p.label}</a>`;
     }).join('\n');
 
+    const flagSVG = '<svg viewBox="0 0 900 600" width="36" height="24"><rect width="450" height="600" fill="#006233"/><rect x="450" width="450" height="600" fill="#FFF"/><g transform="translate(450,300)"><circle r="150" fill="#D21034"/><circle cx="25" r="120" fill="#FFF"/></g><g transform="translate(490,300)" fill="#D21034"><polygon points="0,-70 18.3,-21.6 66.6,-21.6 26.5,8.3 41.1,56.6 0,26.7 -41.1,56.6 -26.5,8.3 -66.6,-21.6 -18.3,-21.6"/></g></svg>';
+
     const sidebarHTML = `
     <button class="menu-toggle" id="menuToggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <span class="flag">🇩🇿</span>
+            <span class="flag">${flagSVG}</span>
             <h2>Road Trip Algérie 2026</h2>
             <div class="trip-dates">21 mars – 10 avril · 4 750 km</div>
         </div>

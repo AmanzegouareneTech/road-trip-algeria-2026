@@ -55,9 +55,14 @@ html, body {
 }
 
 .sidebar-header .flag {
-    font-size: 1.8rem;
     display: block;
     margin-bottom: 6px;
+    line-height: 0;
+}
+
+.sidebar-header .flag svg {
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
 .sidebar-header .trip-dates {
