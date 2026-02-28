@@ -132,14 +132,61 @@ function initMap() {
         maxZoom: 18
     }).addTo(map);
 
-    /* ---------- Route polyline ---------- */
-    const routeCoords = cities.map(c => [c.lat, c.lng]);
-    L.polyline(routeCoords, {
-        color: '#d32f2f',
-        weight: 3,
-        opacity: 0.7,
-        dashArray: '8, 6'
-    }).addTo(map);
+    /* ---------- Route segments ---------- */
+    const routeStyles = {
+        aller:  { color: '#d32f2f', weight: 3.5, opacity: 0.85 },
+        retour: { color: '#1565c0', weight: 3.5, opacity: 0.85, dashArray: '10, 8' }
+    };
+
+    const segments = [];
+    for (let i = 0; i < cities.length - 1; i++) {
+        segments.push({
+            from: [cities[i].lat, cities[i].lng],
+            to:   [cities[i + 1].lat, cities[i + 1].lng],
+            type: 'aller'
+        });
+    }
+    /* Return leg: Biskra → Ibazizen */
+    segments.push({
+        from: [cities[cities.length - 1].lat, cities[cities.length - 1].lng],
+        to:   [cities[0].lat, cities[0].lng],
+        type: 'retour'
+    });
+
+    /* ---------- OSRM routing helpers ---------- */
+    async function fetchOSRMRoute(waypoints) {
+        var coords = waypoints.map(function (p) { return p[1] + ',' + p[0]; }).join(';');
+        var url = 'https://router.project-osrm.org/route/v1/driving/' + coords + '?overview=full&geometries=geojson';
+        var response = await fetch(url);
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        var data = await response.json();
+        if (data.code === 'Ok' && data.routes.length > 0) {
+            return data.routes[0].geometry.coordinates.map(function (c) { return [c[1], c[0]]; });
+        }
+        throw new Error(data.code || 'No route');
+    }
+
+    /* Draw all route segments (real roads via OSRM, fallback to straight lines) */
+    async function drawRoutes() {
+        for (var i = 0; i < segments.length; i++) {
+            var seg = segments[i];
+            var style = routeStyles[seg.type];
+            try {
+                var coords = await fetchOSRMRoute([seg.from, seg.to]);
+                L.polyline(coords, style).addTo(map);
+            } catch (err) {
+                console.warn('OSRM route fallback (straight line) for segment ' + i + ':', err.message);
+                L.polyline([seg.from, seg.to], {
+                    color: style.color,
+                    weight: style.weight,
+                    opacity: 0.5,
+                    dashArray: '4, 8'
+                }).addTo(map);
+            }
+        }
+    }
+
+    drawRoutes();
 
     /* ---------- Markers ---------- */
     const markers = [];
@@ -200,6 +247,13 @@ function initMap() {
     legend.onAdd = function () {
         const div = L.DomUtil.create('div', 'map-legend');
         div.innerHTML = '<h4>Légende</h4>' +
+            '<div class="legend-item">' +
+                '<span class="legend-line" style="border-top:3px solid #d32f2f"></span> Trajet aller' +
+            '</div>' +
+            '<div class="legend-item">' +
+                '<span class="legend-line" style="border-top:3px dashed #1565c0"></span> Trajet retour' +
+            '</div>' +
+            '<hr style="margin:6px 0;border:none;border-top:1px solid #ddd">' +
             Object.entries(typeLabels).map(([key, label]) =>
                 `<div class="legend-item">
                     <span class="legend-dot" style="background:${typeColors[key]}"></span> ${label}

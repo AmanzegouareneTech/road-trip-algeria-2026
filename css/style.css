@@ -240,6 +240,14 @@ html, body {
     flex-shrink: 0;
 }
 
+.legend-line {
+    display: inline-block;
+    width: 20px;
+    height: 0;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
 /* --- City Link Styles (cross-references) --- */
 a.city-link {
     color: #1976d2;
