@@ -105,6 +105,80 @@ function initMap() {
         }
     ];
 
+    /* ---------- Route segment metadata ---------- */
+    const routeInfos = [
+        {
+            from: 'Ibazizen', to: 'Laghouat',
+            distance: '550 km', duration: '6h30',
+            road: 'Autoroute Est-Ouest puis RN1 · Bon état général',
+            driver: 'Ali',
+            notes: 'Départ tôt le matin recommandé. Pause déjeuner à Médéa.'
+        },
+        {
+            from: 'Laghouat', to: 'Ghardaïa',
+            distance: '200 km', duration: '3h',
+            road: 'RN1 · Bon état, route bien entretenue',
+            driver: 'Jean',
+            notes: 'Courte étape. Paysage de transition vers le désert.'
+        },
+        {
+            from: 'Ghardaïa', to: 'In Salah',
+            distance: '550 km', duration: '7h30',
+            road: 'RN1 (Transsaharienne) · Bon état, longue ligne droite',
+            driver: 'Ali',
+            notes: 'Longue étape monotone. Prévoir beaucoup d\'eau et des pauses régulières.'
+        },
+        {
+            from: 'In Salah', to: 'Tamanrasset',
+            distance: '700 km', duration: '10h',
+            road: 'RN1 (Transsaharienne) · État correct, attention ensablement possible',
+            driver: '⚠️ Relais nécessaire',
+            notes: 'Journée très dure. Départ avant l\'aube impératif. Plein de carburant obligatoire à In Salah.'
+        },
+        {
+            from: 'Tamanrasset', to: 'Djanet',
+            distance: '686 km', duration: '10h',
+            road: 'RN3 · ⚠️ Piste critique, portions non goudronnées',
+            driver: '⚠️ Relais nécessaire',
+            notes: 'Tronçon le plus difficile. 4×4 fortement recommandé. GPS et provisions de secours indispensables.'
+        },
+        {
+            from: 'Djanet', to: 'Illizi',
+            distance: '412 km', duration: '6h',
+            road: 'RN3 puis RN · État variable, portions de piste',
+            driver: 'Non assigné',
+            notes: 'Route désertique. Vérifier les pneus et le niveau de carburant avant le départ.'
+        },
+        {
+            from: 'Illizi', to: 'In Amenas',
+            distance: '174 km', duration: '3h',
+            road: 'RN3 · Bon état, route asphaltée',
+            driver: 'Non assigné',
+            notes: 'Étape courte et tranquille.'
+        },
+        {
+            from: 'In Amenas', to: 'Ouargla',
+            distance: '760 km', duration: '10-11h',
+            road: 'RN3 puis RN49 · État correct, traversée du Grand Erg Oriental',
+            driver: '⚠️ Relais nécessaire',
+            notes: 'Très longue étape retour. Possibilité de couper en deux si fatigue.'
+        },
+        {
+            from: 'Ouargla', to: 'Biskra',
+            distance: '205 km', duration: '3h',
+            road: 'RN3 puis RN46 · Bon état, route bien fréquentée',
+            driver: 'Non assigné',
+            notes: 'Retour progressif vers le nord. Paysage d\'oasis.'
+        },
+        {
+            from: 'Biskra', to: 'Ibazizen',
+            distance: '400 km', duration: '5h',
+            road: 'RN5 puis autoroute · Bon état général',
+            driver: 'Non assigné',
+            notes: 'Dernier tronçon. Retour au point de départ via les Gorges d\'El Kantara.'
+        }
+    ];
+
     /* ---------- Colour by type ---------- */
     const typeColors = {
         depart: '#e53935',
@@ -132,6 +206,14 @@ function initMap() {
         maxZoom: 18
     }).addTo(map);
 
+    /* ---------- Loading overlay ---------- */
+    const mapContainer = document.getElementById('map');
+    const loadingOverlay = document.createElement('div');
+    loadingOverlay.className = 'map-loading-overlay';
+    loadingOverlay.innerHTML = '<div class="map-loading-spinner"></div><p>Chargement de la carte…</p>';
+    mapContainer.style.position = 'relative';
+    mapContainer.appendChild(loadingOverlay);
+
     /* ---------- Route segments ---------- */
     const routeStyles = {
         aller:  { color: '#d32f2f', weight: 3.5, opacity: 0.85 },
@@ -143,14 +225,16 @@ function initMap() {
         segments.push({
             from: [cities[i].lat, cities[i].lng],
             to:   [cities[i + 1].lat, cities[i + 1].lng],
-            type: 'aller'
+            type: 'aller',
+            info: routeInfos[i]
         });
     }
     /* Return leg: Biskra → Ibazizen */
     segments.push({
         from: [cities[cities.length - 1].lat, cities[cities.length - 1].lng],
         to:   [cities[0].lat, cities[0].lng],
-        type: 'retour'
+        type: 'retour',
+        info: routeInfos[routeInfos.length - 1]
     });
 
     /* ---------- OSRM routing helpers ---------- */
@@ -166,7 +250,24 @@ function initMap() {
         throw new Error(data.code || 'No route');
     }
 
-    /* Draw all route segments concurrently (real roads via OSRM, fallback to straight lines) */
+    /* Build route popup HTML */
+    function buildRoutePopup(info, segType) {
+        const typeLabel = segType === 'retour' ? '↩️ Retour' : '➡️ Aller';
+        return `
+            <div class="route-popup">
+                <h3>${info.from} → ${info.to}</h3>
+                <div class="route-popup-type">${typeLabel}</div>
+                <div class="route-popup-info">
+                    <strong>📏 Distance :</strong> ${info.distance}<br>
+                    <strong>⏱️ Durée :</strong> ${info.duration}<br>
+                    <strong>🛣️ Route :</strong> ${info.road}<br>
+                    <strong>🚗 Conducteur :</strong> ${info.driver}<br>
+                    <strong>📝 Notes :</strong> ${info.notes}
+                </div>
+            </div>`;
+    }
+
+    /* Draw all route segments concurrently, then add markers */
     async function drawRoutes() {
         var results = await Promise.allSettled(
             segments.map(function (seg) { return fetchOSRMRoute([seg.from, seg.to]); })
@@ -174,76 +275,94 @@ function initMap() {
         results.forEach(function (result, i) {
             var seg = segments[i];
             var style = routeStyles[seg.type];
+            var polyline;
             if (result.status === 'fulfilled') {
-                L.polyline(result.value, style).addTo(map);
+                polyline = L.polyline(result.value, style).addTo(map);
             } else {
                 console.warn('OSRM route fallback (straight line) for segment ' + i +
                     ' (' + seg.from + ' → ' + seg.to + '):', result.reason.message);
-                L.polyline([seg.from, seg.to], {
+                polyline = L.polyline([seg.from, seg.to], {
                     color: style.color,
                     weight: style.weight,
                     opacity: 0.5,
                     dashArray: '4, 8'
                 }).addTo(map);
             }
+            polyline.bindPopup(buildRoutePopup(seg.info, seg.type), { maxWidth: 300 });
+            polyline.bindTooltip(seg.info.from + ' → ' + seg.info.to + ' · ' + seg.info.distance, {
+                sticky: true,
+                className: 'route-tooltip'
+            });
         });
     }
 
-    drawRoutes();
-
     /* ---------- Markers ---------- */
-    const markers = [];
+    function drawMarkers() {
+        const markers = [];
 
-    cities.forEach((city, idx) => {
-        const color = typeColors[city.type];
-        const size = city.type === 'depart' ? 14 : city.type === 'visite' ? 12 : 10;
+        cities.forEach((city, idx) => {
+            const color = typeColors[city.type];
+            const size = city.type === 'depart' ? 14 : city.type === 'visite' ? 12 : 10;
 
-        const icon = L.divIcon({
-            className: 'custom-marker',
-            html: `<div style="
-                width:${size}px;height:${size}px;
-                background:${color};
-                border:2px solid #fff;
-                border-radius:50%;
-                box-shadow:0 1px 4px rgba(0,0,0,0.4);
-            "></div>`,
-            iconSize: [size, size],
-            iconAnchor: [size/2, size/2],
-            popupAnchor: [0, -size/2 - 4]
+            const icon = L.divIcon({
+                className: 'custom-marker',
+                html: `<div style="
+                    width:${size}px;height:${size}px;
+                    background:${color};
+                    border:2px solid #fff;
+                    border-radius:50%;
+                    box-shadow:0 1px 4px rgba(0,0,0,0.4);
+                "></div>`,
+                iconSize: [size, size],
+                iconAnchor: [size/2, size/2],
+                popupAnchor: [0, -size/2 - 4]
+            });
+
+            const popupHTML = `
+                <div class="city-popup">
+                    <h3>${city.name}</h3>
+                    <div class="popup-day">${city.day}</div>
+                    <div class="popup-info">
+                        <strong>🏨</strong> ${city.hotel}<br>
+                        <strong>🛣️</strong> ${city.info}<br><br>
+                        ${city.details}
+                    </div>
+                    <a class="popup-link" href="8-PlanningJourParJour.html#${city.anchor}">
+                        📅 Voir le planning détaillé
+                    </a>
+                </div>`;
+
+            const marker = L.marker([city.lat, city.lng], { icon })
+                .addTo(map)
+                .bindPopup(popupHTML, { maxWidth: 300 });
+
+            marker.bindTooltip(city.name, {
+                permanent: false,
+                direction: 'top',
+                offset: [0, -size/2 - 2],
+                className: 'city-tooltip'
+            });
+
+            markers.push(marker);
         });
 
-        const popupHTML = `
-            <div class="city-popup">
-                <h3>${city.name}</h3>
-                <div class="popup-day">${city.day}</div>
-                <div class="popup-info">
-                    <strong>🏨</strong> ${city.hotel}<br>
-                    <strong>🛣️</strong> ${city.info}<br><br>
-                    ${city.details}
-                </div>
-                <a class="popup-link" href="8-PlanningJourParJour.html#${city.anchor}">
-                    📅 Voir le planning détaillé
-                </a>
-            </div>`;
+        return markers;
+    }
 
-        const marker = L.marker([city.lat, city.lng], { icon })
-            .addTo(map)
-            .bindPopup(popupHTML, { maxWidth: 300 });
-
-        // Tooltip on hover
-        marker.bindTooltip(city.name, {
-            permanent: false,
-            direction: 'top',
-            offset: [0, -size/2 - 2],
-            className: 'city-tooltip'
+    /* ---------- Load everything, then reveal ---------- */
+    drawRoutes()
+        .then(function () {
+            var markers = drawMarkers();
+            var group = L.featureGroup(markers);
+            map.fitBounds(group.getBounds().pad(0.1));
+            loadingOverlay.classList.add('hidden');
+        })
+        .catch(function () {
+            var markers = drawMarkers();
+            var group = L.featureGroup(markers);
+            map.fitBounds(group.getBounds().pad(0.1));
+            loadingOverlay.classList.add('hidden');
         });
-
-        markers.push(marker);
-    });
-
-    /* ---------- Fit bounds ---------- */
-    const group = L.featureGroup(markers);
-    map.fitBounds(group.getBounds().pad(0.1));
 
     /* ---------- Legend ---------- */
     const legend = L.control({ position: 'bottomright' });
