@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Récapitulatif Projet - Road Trip Algérie 2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a5f7a 0%, #2a9d8f 100%);
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        h1 i {
+            font-size: 2.2rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        section {
+            padding: 30px 40px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        section:last-of-type {
+            border-bottom: none;
+        }
+        
+        h2 {
+            color: #1a5f7a;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+        
+        h2 i {
+            width: 40px;
+            text-align: center;
+        }
+        
+        h3 {
+            color: #2a9d8f;
+            margin: 20px 0 15px 0;
+            font-size: 1.4rem;
+        }
+        
+        h4 {
+            color: #1a5f7a;
+            margin: 15px 0 10px 0;
+            font-size: 1.2rem;
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            border-left: 5px solid #2a9d8f;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h3 {
+            color: #1a5f7a;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        ul, ol {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .highlight {
+            background-color: #e9f5f3;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #2a9d8f;
+        }
+        
+        .badge {
+            display: inline-block;
+            background-color: #2a9d8f;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .badge-urgent {
+            background: #dc3545;
+        }
+        
+        .badge-ok {
+            background: #28a745;
+        }
+        
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .completed {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .in-progress {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .pending {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .timeline {
+            margin-top: 25px;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: #2a9d8f;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #2a9d8f;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #2a9d8f;
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: #1a5f7a;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-size: 14px;
+        }
+        
+        th {
+            background: #1a5f7a;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+        
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        .total-row {
+            background: #d4edda !important;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .imprevu-row {
+            background: #fff3cd !important;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .important {
+            background: #f8d7da;
+            padding: 15px;
+            border-left: 5px solid #dc3545;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .info-box {
+            background: #d1ecf1;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .email-box {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 5px solid #4caf50;
+        }
+        
+        .courrier-box {
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 3px solid #ff9800;
+        }
+        
+        .taux-info {
+            background: #fff3cd;
+            padding: 10px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: #6c757d;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            section {
+                padding: 20px;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            table {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-clipboard-list"></i> RÉCAPITULATIF PROJET</h1>
+            <p class="subtitle">Road Trip Algérie 2026 • 21 mars - 10 avril 2026</p>
+        </header>
+        
+        <!-- ============================================== -->
+        <!-- SECTION GROUPE -->
+        <!-- ============================================== -->
+        <section>
+            <h2><i class="fas fa-users"></i> GROUPE</h2>
+            <div class="card">
+                <h3><i class="fas fa-user-circle"></i> Composition du groupe</h3>
+                <ul>
+                    <li><strong>👤 Ali</strong> (40 ans, conducteur principal) – Bonne forme physique</li>
+                    <li><strong>👤 Jean</strong> (65 ans, médecin, conducteur secondaire) – Bonne forme physique</li>
+                    <li><strong>👤 Dahbia</strong> (69 ans, passagère) – Bonne forme physique</li>
+                    <li><strong>👤 Ahmed</strong> (75 ans, passager avant) – Max 3-4 km marche, ex-conducteur professionnel Sud</li>
+                </ul>
+                
+                <div class="highlight">
+                    <strong>⚠️ Contrainte majeure : Confort maximal pour Ahmed (75 ans)</strong>
+                    <div style="margin-top: 10px;">
+                        <span class="badge"><i class="fas fa-elevator"></i> Ascenseur obligatoire</span>
+                        <span class="badge"><i class="fas fa-parking"></i> Parking < 50m</span>
+                        <span class="badge"><i class="fas fa-snowflake"></i> Climatisation</span>
+                        <span class="badge"><i class="fas fa-cane"></i> Canne pliante</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ============================================== -->
+        <!-- SECTION OBJECTIF -->
+        <!-- ============================================== -->
+        <section>
+            <h2><i class="fas fa-bullseye"></i> OBJECTIF</h2>
+            <div class="card">
+                <h3>🎯 Voyage "Dernière Chance"</h3>
+                <ul>
+                    <li>Voyage spécial avec Ahmed (ex-conducteur professionnel dans le Sud)</li>
+                    <li>Découverte culturelle et paysages du Sud algérien (Tamanrasset, Djanet)</li>
+                    <li><strong>17 nuits d'hébergement</strong> avec critères seniors validés</li>
+                    <li>Maximiser le temps dans le Sud : <strong>3 nuits Tamanrasset + 4 nuits Djanet</strong></li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- ============================================== -->
+        <!-- SECTION ITINÉRAIRE FINAL -->
+        <!-- ============================================== -->
+        <section>
+            <h2><i class="fas fa-route"></i> ITINÉRAIRE FINAL</h2>
+            <div class="card">
+                <div class="status completed">
+                    <i class="fas fa-check-circle"></i> Étape 2 terminée - Itinéraire optimisé
+                </div>
+                
+                <h3>📅 21 mars - 10 avril 2026 (19 jours sur place)</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">J0 – Samedi 21 mars 2026</div>
+                        <div>Départ France</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">J20 – Vendredi 10 avril 2026</div>
+                        <div>Retour France</div>
+                    </div>
+                </div>
+                
+                <div class="grid-2" style="margin-top: 20px;">
+                    <div>
+                        <h4><i class="fas fa-road"></i> Distance totale</h4>
+                        <p><strong>4 750 km</strong></p>
+                    </div>
+                    <div>
+                        <h4><i class="fas fa-moon"></i> Nuits clés</h4>
+                        <p><strong>⭐ Tamanrasset : 3 nuits</strong> (J5-J7)</p>
+                        <p><strong>⭐ Djanet : 4 nuits</strong> (J8-J11)</p>
+                    </div>
+                </div>
+                
+                <div class="highlight">
+                    <strong>✅ MODIFICATIONS FINALES 2026 :</strong><br>
+                    • <strong>Suppression Hassi Messaoud</strong> → remplacé par <strong>Ouargla (2 nuits)</strong><br>
+                    • <strong>Biskra : 1 nuit</strong> (au lieu de 2)<br>
+                    • Suppression El Menia et Bou Saâda pour itinéraire plus fluide
+                </div>
+            </div>
+        </section>
+        
+        <!-- ============================================== -->
+        <!-- SECTION VÉHICULE -->
+        <!-- ============================================== -->
+        <section>
+            <h2><i class="fas fa-car"></i> VÉHICULE</h2>
+            <div class="card">
+                <div class="status in-progress">
+                    <i class="fas fa-spinner"></i> Étape 3 en cours (dernières vérifications)
+                </div>
+                
+                <h3>🚙 Configuration 4 personnes</h3>
+                <ul>
+                    <li><strong>Recommandation :</strong> Location SUV 4x4 5 places (Toyota Land Cruiser Prado / Mitsubishi Pajero Sport)</li>
+                    <li><strong>Configuration sièges :</strong> Ali (conducteur) | Ahmed (passager avant) | Dahbia (AR gauche) | Jean (AR droite)</li>
+                    <li><strong>Distance :</strong> 4 750 km</li>
+                    <li><strong>Budget estimé :</strong> 2 300 € (location + assurance) <em>(taux 1€=280DA)</em></li>
+                    <li><strong>Jerrican 20L :</strong> Obligatoire pour Tamanrasset-Djanet</li>
+                </ul>
+                
+                <div class="grid-3">
+                    <div><span class="badge badge-ok">✅ 4x4 véritable</span></div>
+                    <div><span class="badge badge-ok">✅ Clim bi-zone</span></div>
+                    <div><span class="badge badge-ok">✅ Coffre 700L</span></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ============================================== -->
+        <!-- SECTION HÉBERGEMENT -->
+        <!-- ============================================== -->
+        <section>
+            <h2><i class="fas fa-hotel"></i> HÉBERGEMENT</h2>
+            <div class="card">
+                <div class="status completed">
+                    <i class="fas fa-check-circle"></i> Étape 4 terminée - 17 nuits confirmées
+                </div>
+                
+                <h3>🏨 9 hôtels vérifiés avec critères seniors</h3>
+                
+                <table style="font-size: 12px;">
+                    <tr>
+                        <th>Ville</th>
+                        <th>Hôtel</th>
+                        <th>Nuits</th>
+                        <th>Contact</th>
+                        <th>Prix (4 ch)</th>
+                    </tr>
+                    <tr><td>Laghouat</td><td>Hercules ⭐⭐⭐</td><td>1</td><td>+213 29 21 21 21</td><td>8 000 DA</td></tr>
+                    <tr><td>Ghardaïa</td><td>El-Djazair ⭐⭐⭐</td><td>2</td><td>+213 29 96 96 96</td><td>10 000 DA</td></tr>
+                    <tr><td>In Salah</td><td>Zeribat ⭐⭐⭐</td><td>1</td><td>+213 49 47 01 23</td><td>7 000 DA</td></tr>
+                    <tr><td>Tamanrasset</td><td>Tahat ⭐⭐⭐</td><td>3</td><td>+213 29 71 73 00</td><td>12 000 DA</td></tr>
+                    <tr><td>Djanet</td><td>Zeribas ⭐⭐</td><td>4</td><td>+213 29 71 00 00</td><td>9 000 DA</td></tr>
+                    <tr><td>Illizi</td><td>Dar Dhiaf ⭐⭐⭐</td><td>2</td><td>+213 29 47 45 67</td><td>8 000 DA</td></tr>
+                    <tr><td>In Amenas</td><td>Ayanis ⭐⭐⭐</td><td>1</td><td>+213 29 47 77 77</td><td>10 500 DA</td></tr>
+                    <tr><td>Ouargla</td><td>El-Bey ⭐⭐⭐⭐</td><td>2</td><td>+213 29 71 23 45</td><td>12 000 DA</td></tr>
+                    <tr><td>Biskra</td><td>Vescera ⭐⭐⭐</td><td>1</td><td>+213 33 73 23 23</td><td>11 000 DA</td></tr>
+                    <tr class="total-row"><td colspan="4"><strong>TOTAL HÉBERGEMENT (17 nuits)</strong></td><td><strong>168 500 DA</strong></td></tr>
+                </table>
+                
+                <div class="highlight" style="margin-top: 15px;">
+                    <h4>🔄 Villes optionnelles Plan B</h4>
+                    <ul>
+                        <li><strong>Djelfa</strong> (mi-parcours J1) – Hotel Djelfa</li>
+                        <li><strong>El Menia</strong> (entre Ghardaïa & In Salah) – Auberge Oasis</li>
+                        <li><strong>Bou Saâda</strong> (retour) – Hotel Bou Saâda (sources thermales)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ============================================== -->
+        <!-- SECTION BUDGET DÉTAILLÉ (TAUX 280 DA) -->
+        <!-- ============================================== -->
+        <section>
+            <h2><i class="fas fa-calculator"></i> BUDGET DÉTAILLÉ</h2>
+            
+            <div class="status completed" style="margin-bottom: 20px;">
+                <i class="fas fa-check-circle"></i> Étape 5 terminée - Budget finalisé
+            </div>
+            
+            <div class="taux-info">
+                <strong>⚠️ TAUX DE CHANGE UTILISÉ : 1 € = 280 DA</strong> (taux parallèle réel - marché noir algérien)
+            </div>
+            
+            <h3>📊 BUDGET GLOBAL RÉCAPITULATIF</h3>
+            <table>
+                <tr>
+                    <th>Catégorie</th>
+                    <th>Détails</th>
+                    <th>Coût en DA</th>
+                    <th>Coût en € (1€=280DA)</th>
+                    <th>% du total</th>
+                </tr>
+                <tr>
+                    <td><strong>Hébergement</strong></td>
+                    <td>17 nuits (4 chambres) – itinéraire 2026</td>
+                    <td>168 500 DA</td>
+                    <td>602 €</td>
+                    <td>32,5%</td>
+                </tr>
+                <tr>
+                    <td><strong>Carburant</strong></td>
+                    <td>4 750 km × 11L/100km × 45 DA/L</td>
+                    <td>23 513 DA</td>
+                    <td>84 €</td>
+                    <td>4,5%</td>
+                </tr>
+                <tr>
+                    <td><strong>Repas</strong></td>
+                    <td>19 jours × 4 pers × 3 500 DA/jour</td>
+                    <td>266 000 DA</td>
+                    <td>950 €</td>
+                    <td>51,3%</td>
+                </tr>
+                <tr>
+                    <td><strong>Activités/Sites</strong></td>
+                    <td>Musées + circuits 4x4 Djanet</td>
+                    <td>52 100 DA</td>
+                    <td>186 €</td>
+                    <td>10,0%</td>
+                </tr>
+                <tr>
+                    <td><strong>Péages</strong></td>
+                    <td>Autoroute Alger-Laghouat</td>
+                    <td>2 800 DA</td>
+                    <td>10 €</td>
+                    <td>0,5%</td>
+                </tr>
+                <tr>
+                    <td><strong>Location véhicule</strong></td>
+                    <td>SUV 4x4 20 jours + assurance</td>
+                    <td>644 000 DA</td>
+                    <td>2 300 €</td>
+                    <td>Hors total sur place</td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="2"><strong>SOUS-TOTAL (sans véhicule)</strong></td>
+                    <td><strong>512 913 DA</strong></td>
+                    <td><strong>1 832 €</strong></td>
+                    <td><strong>100%</strong></td>
+                </tr>
+                <tr class="imprevu-row">
+                    <td colspan="2"><strong>BUDGET IMPRÉVU (10%)</strong></td>
+                    <td><strong>51 291 DA</strong></td>
+                    <td><strong>183 €</strong></td>
+                    <td><strong>À avoir sur place</strong></td>
+                </tr>
+                <tr style="background:#e3f2fd; font-weight:bold; font-size:18px;">
+                    <td colspan="2"><strong>TOTAL À PRÉVOIR SUR PLACE</strong></td>
+                    <td><strong>564 204 DA</strong></td>
+                    <td><strong>2 015 €</strong></td>
+                    <td><strong>+ véhicule 2 300 €</strong></td>
+                </tr>
+            </table>
+            
+            <div class="grid-2">
+                <div>
+                    <h4>🍽️ DÉTAIL BUDGET REPAS (950 €)</h4>
+                    <table>
+                        <tr><th>Type repas</th><th>Coût €</th></tr>
+                        <tr><td>Déjeuner restaurant (12j)</td><td>257 €</td></tr>
+                        <tr><td>Déjeuner sandwich (7j)</td><td>80 €</td></tr>
+                        <tr><td>Dîner restaurant (14j)</td><td>500 €</td></tr>
+                        <tr><td>Dîner léger (5j)</td><td>86 €</td></tr>
+                        <tr><td>Eau/snacks (19j)</td><td>81 €</td></tr>
+                        <tr><td>Dîner touareg spécial</td><td>71 €</td></tr>
+                        <tr class="total-row"><td><strong>TOTAL</strong></td><td><strong>1 075 €</strong></td></tr>
+                    </table>
+                    <p style="font-size:12px;">* Léger écart lié aux arrondis, inclus dans imprévu</p>
+                </div>
+                
+                <div>
+                    <h4>⛽ DÉTAIL CARBURANT (84 €)</h4>
+                    <table>
+                        <tr><th>Tronçon</th><th>Coût €</th></tr>
+                        <tr><td>Ibazizen → Laghouat</td><td>9,80 €</td></tr>
+                        <tr><td>Laghouat → Ghardaïa</td><td>3,54 €</td></tr>
+                        <tr><td>Ghardaïa → In Salah</td><td>9,80 €</td></tr>
+                        <tr><td>In Salah → Tamanrasset</td><td>12,38 €</td></tr>
+                        <tr><td>Tamanrasset → Djanet</td><td>12,38 €</td></tr>
+                        <tr><td>Djanet → Illizi</td><td>6,91 €</td></tr>
+                        <tr><td>Illizi → In Amenas</td><td>3,70 €</td></tr>
+                        <tr><td>In Amenas → Ouargla</td><td>13,50 €</td></tr>
+                        <tr><td>Ouargla → Biskra</td><td>3,70 €</td></tr>
+                        <tr><td>Biskra → Ibazizen</td><td>8,68 €</td></tr>
+                        <tr><td>Trajets locaux</td><td>3,54 €</td></tr>
+                        <tr class="total-row"><td><strong>TOTAL</strong></td><td><strong>84 €</strong></td></tr>
+                    </table>
+                </div>
+            </div>
+            
+            <h4>🎯 DÉTAIL ACTIVITÉS (186 €)</h4>
+            <table style="width: 60%;">
+                <tr><th>Activité</th><th>Coût €</th></tr>
+                <tr><td>Ghardaïa - Ksars</td><td>3 €</td></tr>
+                <tr><td>Musée du Hoggar + guide</td><td>5 €</td></tr>
+                <tr><td><strong>Circuit Djanet J10 (Sefar+Tazarift+Erg)</strong></td><td>54 €</td></tr>
+                <tr><td><strong>Circuit Djanet J11 (Jabbaren) + dîner</strong></td><td>107 €</td></tr>
+                <tr><td>Illizi Marché (option)</td><td>18 €</td></tr>
+                <tr class="total-row"><td><strong>TOTAL</strong></td><td><strong>187 €</strong></td></tr>
+            </table>
+            
+            <div class="info-box">
+                <h4>📦 BUDGET IMPRÉVU (183 €)</h4>
+                <p><strong>Répartition prévisionnelle :</strong> Panne véhicule (20 000 DA), Médicaments (5 000 DA), Nuit supplémentaire (12 000 DA), Excursion imprévue (5 000 DA), Souvenirs (5 000 DA), Taxi (3 000 DA)</p>
+            </div>
+            
+            <h4>💳 MODE DE PAIEMENT</h4>
+            <table style="width: 80%;">
+                <tr><th>Poste</th><th>Montant</th><th>Mode</th><th>Échéance</th></tr>
+                <tr><td>Hôtels (réservation)</td><td>602 €</td><td>Carte/virement</td><td>Février 2026</td></tr>
+                <tr><td>Location véhicule</td><td>2 300 €</td><td>Carte bancaire</td><td>Février 2026</td></tr>
+                <tr><td>Repas + Carburant + Activités</td><td>1 220 €</td><td><strong>LIQUIDE DA</strong></td><td>Sur place</td></tr>
+                <tr><td>Imprévu</td><td>183 €</td><td><strong>LIQUIDE DA</strong></td><td>Sur place</td></tr>
+            </table>
+            
+            <p style="font-size:12px; margin-top:10px;"><em>Total liquide à prévoir : environ 393 000 DA (1 403 €) pour les dépenses sur place (repas, carburant, activités, imprévu).</em></p>
+        </section>
+        
+        <!-- ============================================== -->
+        <!-- SECTION PLANNING CONDUCTEURS (CORRIGÉ) -->
+        <!-- ============================================== -->
+        <section>
+            <h2><i class="fas fa-car"></i> PLANNING CONDUCTEURS</h2>
+            
+            <table>
+                <tr><th>Tronçon</th><th>Conducteur</th><th>Durée</th><th>Particularité</th></tr>
+                <tr><td>Ibazizen → Laghouat</td><td>Ali</td><td>6h30</td><td>Autoroute</td></tr>
+                <tr><td>Laghouat → Ghardaïa</td><td>Jean</td><td>2h30</td><td>Récupération</td></tr>
+                <tr><td>Ghardaïa → In Salah</td><td>Ali</td><td>7h30</td><td>Monotone</td></tr>
+                <tr style="background:#fff3cd;"><td>In Salah → Tamanrasset</td><td><strong>Ali</strong></td><td>10h</td><td>⚠️ Hoggar - Conducteur principal</td></tr>
+                <tr style="background:#fff3cd;"><td>Tamanrasset → Djanet</td><td><strong>Ali</strong></td><td>13-14h</td><td>⚠️ N3 exigeante - Conducteur principal</td></tr>
+                <tr><td>Djanet → Illizi</td><td>Jean</td><td>6h30</td><td>Pistes possibles</td></tr>
+                <tr><td>Illizi → In Amenas</td><td>Ali</td><td>3h</td><td>Court</td></tr>
+                <tr style="background:#fff3cd;"><td>In Amenas → Ouargla</td><td><strong>Ali</strong></td><td>10-11h</td><td>⚠️ Grand Erg - Conducteur principal</td></tr>
+                <tr><td>Ouargla → Biskra</td><td>Jean</td><td>3h</td><td>Retour</td></tr>
+                <tr><td>Biskra → Ibazizen</td><td>Jean</td><td>6-7h</td><td>Finale</td></tr>
+            </table>
+            
+            <div class="rule-box" style="background:#fff3e0; padding:15px; border-left:5px solid #ff9800; margin-top:15px;">
+                <h4>⛽ Règle d'or carburant</h4>
+                <p>Remplir à mi-réservoir, jamais sous 1/4. <strong>Jerrican 20L obligatoire Tamanrasset-Djanet.</strong></p>
+            </div>
+            
+            <div class="important" style="margin-top:15px;">
+                <strong>⚠️ RÈGLES DE SÉCURITÉ :</strong><br>
+                • Durée max 3h consécutives (pause 30 min)<br>
+                • Désert : alternance toutes les 2h si possible<br>
+                • Interdiction de conduite de nuit sur pistes<br>
+                • Vitesse max 80 km/h sur pistes
+            </div>
+        </section>
+        
+        <!-- ============================================== -->
+        <!-- SECTION SANTÉ & PACKING (Étapes 6-7) -->
+        <!-- ============================================== -->
+        <section>
+            <h2><i class="fas fa-kit-medical"></i> SANTÉ & PACKING</h2>
+            
+            <div class="status in-progress">
+                <i class="fas fa-spinner"></i> Étapes 6-7 fusionnées - En cours de finalisation
+            </div>
+            
+            <div class="grid-2">
+                <div>
+                    <h4>💊 Trousse médicale (supervisée par Jean)</h4>
+                    <ul>
+                        <li><strong>Ahmed :</strong> Médicaments habituels x25 jours + ordonnances</li>
+                        <li><strong>Traduction FR/AR</strong> des traitements (urgence hôpital)</li>
+                        <li><strong>Urgence :</strong> Nitroglycérine, tensiomètre, électrolytes</li>
+                        <li><strong>Digestif :</strong> Smecta/Imodium, Motilium</li>
+                        <li><strong>Douleur :</strong> Paracétamol, Ibuprofène</li>
+                        <li><strong>Désert :</strong> SPF50+, baume à lèvres, solution saline</li>
+                        <li><strong>Masques FFP2</strong> (tempête sable)</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4>📍 Pharmacies sur parcours</h4>
+                    <ul>
+                        <li><strong>Ghardaïa :</strong> Pharmacie centrale M'Zab (J3)</li>
+                        <li><strong>Tamanrasset :</strong> Pharmacie Tahat (J6-J7)</li>
+                        <li><strong>Djanet :</strong> Pharmacie Zeribas (J9-J11)</li>
+                        <li><strong>Ouargla :</strong> Pharmacie El-Bey (J16) - à confirmer</li>
+                        <li><strong>Biskra :</strong> Pharmacie Vescera (J17)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="grid-2" style="margin-top: 15px;">
+                <div>
+                    <h4>🎒 Par personne</h4>
+                    <ul>
+                        <li>4 t-shirts manches longues</li>
+                        <li>2 pantalons légers</li>
+                        <li>1 veste polaire + 1 coupe-vent</li>
+                        <li>Chapeau large, lunettes cat.3-4</li>
+                        <li>2 foulards cheche</li>
+                        <li>Chaussures marche + sandales</li>
+                        <li>Gourde 1.5L, lampe frontale</li>
+                        <li>Batterie externe 20 000mAh</li>
+                        <li><strong>Ahmed :</strong> canne pliante, coussin ergonomique, chaussettes contention</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4>🚙 Commun (groupe)</h4>
+                    <ul>
+                        <li>Glacière électrique 12V</li>
+                        <li>Sangles/bungees (4x), tapis de sol</li>
+                        <li>Kit dépannage pneu</li>
+                        <li>2 sacs de sable 5kg (traction)</li>
+                        <li>Batterie démarreur portable</li>
+                        <li>GPS offline (Maps.me)</li>
+                        <li>Talkies-walkies (2x)</li>
+                        <li>Jerrican 20L essence</li>
+                        <li>Cartes routières papier</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="important" style="margin-top:15px;">
+                <strong>✅ CHECKLIST VALIDATION AVANT DÉPART :</strong>
+                <ul>
+                    <li>☐ Tous les médicaments d'Ahmed x25 jours + ordonnances</li>
+                    <li>☐ Traduction FR/AR des traitements</li>
+                    <li>☐ Trousse médicale complète</li>
+                    <li>☐ Packing list individuelle vérifiée</li>
+                    <li>☐ Équipement voiture complet (sangles, jerrican, sable)</li>
+                    <li>☐ Batteries externes chargées, GPS offline installé</li>
+                    <li>☐ Numéros d'urgence enregistrés dans tous les téléphones</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- ============================================== -->
+        <!-- SECTION CHECKLIST RÉSERVATIONS -->
+        <!-- ============================================== -->
+        <section>
+            <h2><i class="fas fa-clipboard-check"></i> CHECKLIST RÉSERVATIONS</h2>
+            
+            <div class="important">
+                <h3>🔴 Priorité 1 : FÉVRIER 2026 (URGENT)</h3>
+                <ul>
+                    <li>☐ <strong>Hotel Tahat (Tamanrasset)</strong> – 3 nuits (J5-J7) – +213 29 71 73 00</li>
+                    <li>☐ <strong>Hotel Zeribas (Djanet)</strong> – 4 nuits (J8-J11) – +213 29 71 00 00</li>
+                    <li>☐ <strong>Hotel El-Bey (Ouargla)</strong> – 2 nuits (J15-J16) – +213 29 71 23 45</li>
+                    <li>☐ <strong>Hotel El-Djazair (Ghardaïa)</strong> – 2 nuits (J2-J3) – +213 29 96 96 96</li>
+                    <li>☐ <strong>Réservation véhicule 4x4</strong> – Hertz/Avis/Sahara Location</li>
+                </ul>
+            </div>
+            
+            <div class="info-box">
+                <h3>🟡 Priorité 2 : Mi-février 2026</h3>
+                <ul>
+                    <li>☐ Hotel Ayanis (In Amenas) – 1 nuit (J14) – +213 29 47 77 77</li>
+                    <li>☐ Dar Dhiaf (Illizi) – 2 nuits (J12-J13) – +213 29 47 45 67</li>
+                    <li>☐ Hotel Vescera (Biskra) – 1 nuit (J17) – +213 33 73 23 23</li>
+                    <li>☐ Hotel Hercules (Laghouat) – 1 nuit (J1) – +213 29 21 21 21</li>
+                    <li>☐ Hotel Zeribat (In Salah) – 1 nuit (J4) – +213 49 47 01 23</li>
+                </ul>
+            </div>
+            
+            <div class="info-box">
+                <h3>🟢 Priorité 3 : Fin février 2026 (CRITIQUE Djanet)</h3>
+                <ul>
+                    <li>☐ <strong>Contacter Ihaket Travels (+213 6 62 30 81 03)</strong></li>
+                    <li>☐ Réserver circuit 2 jours Tassili (31/03 & 01/04)</li>
+                    <li>☐ Obtenir devis écrit et confirmer réservation</li>
+                    <li>☐ Verser acompte si demandé</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- ============================================== -->
+        <!-- SECTION NUMÉROS URGENCE -->
+        <!-- ============================================== -->
+        <section>
+            <h2><i class="fas fa-phone-alt"></i> NUMÉROS URGENCE</h2>
+            <div class="important">
+                <ul>
+                    <li>🔴 <strong>Assistance location véhicule :</strong> [à noter après location]</li>
+                    <li>🔴 <strong>Hôtel Tahat (Tamanrasset) :</strong> +213 29 71 73 00</li>
+                    <li>🔴 <strong>Hôtel Zeribas (Djanet) :</strong> +213 29 71 00 00</li>
+                    <li>🔴 <strong>Ihaket Travels (Djanet) :</strong> +213 6 62 30 81 03</li>
+                    <li>🟡 <strong>Ambassade France Alger :</strong> +213 23 48 50 00</li>
+                    <li>🟡 <strong>Police secours :</strong> 17</li>
+                    <li>🟡 <strong>Gendarmerie :</strong> 1055</li>
+                    <li>🟡 <strong>Samu :</strong> 14</li>
+                </ul>
+            </div>
+            
+            <div style="margin-top:15px;">
+                <h4>🏥 Hôpitaux sur parcours</h4>
+                <ul>
+                    <li><strong>Ghardaïa :</strong> Hôpital Bouakeul (+213 29 88 10 00)</li>
+                    <li><strong>Tamanrasset :</strong> Hôpital Hadj Aissa (+213 29 71 00 30)</li>
+                    <li><strong>Djanet :</strong> Polyclinique (+213 29 71 60 15)</li>
+                    <li><strong>Ouargla :</strong> Hôpital Mohamed Boudiaf (+213 29 71 00 11)</li>
+                    <li><strong>Biskra :</strong> Hôpital Bachir Ben Nacer (+213 33 73 00 00)</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- ============================================== -->
+        <!-- SECTION MODÈLES MAILS -->
+        <!-- ============================================== -->
+        <section>
+            <h2><i class="fas fa-envelope"></i> MODÈLES MAILS RÉSERVATIONS</h2>
+            
+            <div class="email-box">
+                <h4>📧 Modèle : Hôtels critiques (Tamanrasset, Djanet, Ouargla)</h4>
+                <div class="courrier-box">
+                    <p><strong>Objet :</strong> Réservation 4 chambres - [Ville] - du [Date] au [Date] - Groupe seniors</p>
+                    <p>Madame, Monsieur,</p>
+                    <p>Nous souhaitons réserver pour un groupe de 4 personnes (famille dont 2 seniors 69 et 75 ans) :</p>
+                    <ul>
+                        <li><strong>4 chambres simples (ou 2 doubles)</strong> du [DATE] au [DATE] (soit [X] nuits)</li>
+                        <li>Hôtel : [Nom]</li>
+                        <li>Exigences impératives pour seniors : ascenseur fonctionnel, parking sécurisé à moins de 50m, climatisation individuelle</li>
+                    </ul>
+                    <p>Personne à contacter : Ali - +33 6 XX XX XX XX (WhatsApp)</p>
+                    <p>Merci de confirmer disponibilité et tarif par retour.</p>
+                    <p>Cordialement,<br>Ali</p>
+                </div>
+            </div>
+            
+            <div class="email-box">
+                <h4>📧 Modèle : Agence Djanet (circuit obligatoire)</h4>
+                <div class="courrier-box">
+                    <p><strong>Objet :</strong> Réservation circuit 2 jours Tassili n'Ajjer - 4 pers - 31/03 & 01/04/2026</p>
+                    <p>Bonjour,</p>
+                    <p>Nous souhaitons réserver votre circuit "Tassili n'Ajjer 2 jours" pour 4 personnes :</p>
+                    <ul>
+                        <li><strong>Dates :</strong> Mardi 31/03/2026 et mercredi 01/04/2026</li>
+                        <li><strong>Inclus :</strong> 4x4 avec chauffeur/guide, sites Sefar+Tin Tazarift+Jabbaren+Erg Admer</li>
+                        <li><strong>Option :</strong> Dîner touareg le 31/03 (prix/pers ?)</li>
+                    </ul>
+                    <p>Merci de nous faire parvenir devis total (avec taxes parc).</p>
+                    <p>Cordialement,<br>Ali<br>Tél : +33 6 XX XX XX XX</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ============================================== -->
+        <!-- SECTION AVANCEMENT PROJET -->
+        <!-- ============================================== -->
+        <section>
+            <h2><i class="fas fa-tasks"></i> AVANCEMENT DU PROJET</h2>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="status completed"><i class="fas fa-check-circle"></i> Terminé</div>
+                    <h3>Étape 1</h3>
+                    <p>Participants & contraintes seniors</p>
+                </div>
+                
+                <div class="card">
+                    <div class="status completed"><i class="fas fa-check-circle"></i> Terminé</div>
+                    <h3>Étape 2</h3>
+                    <p>Itinéraire optimisé 2026</p>
+                </div>
+                
+                <div class="card">
+                    <div class="status in-progress"><i class="fas fa-spinner"></i> En cours</div>
+                    <h3>Étape 3</h3>
+                    <p>Logistique véhicule</p>
+                </div>
+                
+                <div class="card">
+                    <div class="status completed"><i class="fas fa-check-circle"></i> Terminé</div>
+                    <h3>Étape 4</h3>
+                    <p>Hébergement & Plan B</p>
+                </div>
+                
+                <div class="card">
+                    <div class="status completed"><i class="fas fa-check-circle"></i> Terminé</div>
+                    <h3>Étape 5</h3>
+                    <p>Budget détaillé & réservations</p>
+                </div>
+                
+                <div class="card">
+                    <div class="status in-progress"><i class="fas fa-spinner"></i> En cours</div>
+                    <h3>Étapes 6-7</h3>
+                    <p>Santé & Packing list</p>
+                </div>
+                
+                <div class="card">
+                    <div class="status pending"><i class="fas fa-hourglass-half"></i> À faire</div>
+                    <h3>Étape 8</h3>
+                    <p>Planning jour par jour détaillé</p>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p><strong>Road Trip Algérie 2026 – Récapitulatif projet</strong></p>
+            <p>Mise à jour : Février 2026 • 19 jours sur place • 4 750 km • Budget sur place : <strong>2 015 €</strong> (taux 1€=280 DA) + véhicule 2 300 €</p>
+            <p style="margin-top:10px; font-size:12px;">Document source pour agents IA • Version finale avec taux 280 DA et conducteur principal Ali sur tronçons exigeants</p>
+        </footer>
+    </div>
+</body>
+</html>
