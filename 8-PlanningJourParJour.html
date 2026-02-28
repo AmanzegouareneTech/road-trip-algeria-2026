@@ -231,10 +231,16 @@
         .recap-table td.green-bg { background-color: #d4edda; }
         .recap-table td.yellow-bg { background-color: #fff3cd; }
         .recap-table td.red-bg { background-color: #f8d7da; }
+        /* Sidebar layout overrides */
+        body { margin: 0; padding: 0; background: #f0f2f5; }
+        .container { max-width: 100%; margin: 0; border-radius: 0; box-shadow: none; }
     </style>
 <base target="_blank">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<div class="site-wrapper"><div class="main-content"><div class="page-container">
 <div class="container">
     <h1>📅 ÉTAPE 8 – PLANNING JOUR PAR JOUR DÉTAILLÉ<br>〈 mise à jour 2026 〉</h1>
     <p style="text-align:center; font-size:16px; color:#666; margin-bottom:30px;">
@@ -262,7 +268,7 @@
     <!-- ============================================== -->
     <!-- J0 -->
     <!-- ============================================== -->
-    <div class="day-card">
+    <div class="day-card" id="j0">
         <div class="day-header">
             <div class="day-title"><i class="fas fa-plane-departure"></i> J0 – Samedi 21 mars 2026</div>
             <div class="day-meta"><span><i class="fas fa-flag"></i> DÉPART FRANCE</span></div>
@@ -278,7 +284,7 @@
     </div>
 
     <!-- J1 -->
-    <div class="day-card">
+    <div class="day-card" id="j1">
         <div class="day-header">
             <div class="day-title"><i class="fas fa-road"></i> J1 – Dimanche 22 mars</div>
             <div class="day-meta">
@@ -295,7 +301,7 @@
                 <tr><td>06:30</td><td>Départ</td><td>RN12 puis Autoroute Est-Ouest</td><td>-</td></tr>
                 <tr><td>10:00</td><td>Pause</td><td>Café Bouira (30 min)</td><td>-</td></tr>
                 <tr><td>13:00</td><td>Pause déjeuner</td><td>Aire autoroute (45 min)</td><td>🥪 Sandwich</td></tr>
-                <tr><td>13:00</td><td>Arrivée Laghouat</td><td>Hotel Hercules</td><td>-</td></tr>
+                <tr><td>13:00</td><td>Arrivée Laghouat</td><td><a href="4-Hebergement-Hotels-Resa.html" class="city-link">Hotel Hercules</a></td><td>-</td></tr>
                 <tr class="option-green"><td>15:00-17:00</td><td>⭐ Option A : Visite centre ancien + palmeraie</td><td>2h marche douce</td><td>🟢 Programme complet</td></tr>
                 <tr class="option-yellow"><td>15:00-17:00</td><td>Option B : Repos hôtel</td><td>Récupération</td><td>🟡 Fatigue modérée</td></tr>
                 <tr><td>19:30</td><td>Dîner</td><td>Restaurant hôtel</td><td>-</td></tr>
@@ -305,7 +311,7 @@
     </div>
 
     <!-- J2 -->
-    <div class="day-card">
+    <div class="day-card" id="j2">
         <div class="day-header">
             <div class="day-title">J2 – Lundi 23 mars</div>
             <div class="day-meta">
@@ -320,7 +326,7 @@
                 <tr><th>Heure</th><th>Activité</th><th>Détail</th><th>Option Fatigue</th></tr>
                 <tr><td>08:00</td><td>Lever</td><td>Petit déjeuner hôtel</td><td>08:30</td></tr>
                 <tr><td>09:00</td><td>Départ</td><td>RN46</td><td>-</td></tr>
-                <tr><td>11:30</td><td>Arrivée Ghardaïa</td><td>Hotel El-Djazair</td><td>-</td></tr>
+                <tr><td>11:30</td><td>Arrivée Ghardaïa</td><td><a href="4-Hebergement-Hotels-Resa.html" class="city-link">Hotel El-Djazair</a></td><td>-</td></tr>
                 <tr><td>12:00</td><td>Déjeuner</td><td>Restaurant centre</td><td>-</td></tr>
                 <tr><td>13:00-16:00</td><td>⭐ SIESTE OBLIGATOIRE</td><td>Climatisation</td><td>🔴 Repos total</td></tr>
                 <tr class="option-green"><td>16:00-18:00</td><td>⭐ Option A : Marché couvert + ksar</td><td>1h30 découverte</td><td>🟢 Programme complet</td></tr>
@@ -332,7 +338,7 @@
     </div>
 
     <!-- J3 -->
-    <div class="day-card">
+    <div class="day-card" id="j3">
         <div class="day-header">
             <div class="day-title">J3 – Mardi 24 mars</div>
             <div class="day-meta">
@@ -359,7 +365,7 @@
     </div>
 
     <!-- J4 -->
-    <div class="day-card">
+    <div class="day-card" id="j4">
         <div class="day-header">
             <div class="day-title">J4 – Mercredi 25 mars</div>
             <div class="day-meta">
@@ -376,7 +382,7 @@
                 <tr><td>06:00</td><td>Départ</td><td>RN1 direct</td><td>-</td></tr>
                 <tr><td>09:00</td><td>Pause</td><td>El Menia (20 min)</td><td>-</td></tr>
                 <tr><td>12:00</td><td>Pique-nique</td><td>RN1, ombre rare</td><td>Sandwichs</td></tr>
-                <tr><td>14:00</td><td>Arrivée In Salah</td><td>Hotel Zeribat</td><td>-</td></tr>
+                <tr><td>14:00</td><td>Arrivée In Salah</td><td><a href="4-Hebergement-Hotels-Resa.html" class="city-link">Hotel Zeribat</a></td><td>-</td></tr>
                 <tr><td>14:30-19:00</td><td>⭐ REPOS TOTAL</td><td>Climatisation</td><td>🔴 Obligatoire</td></tr>
                 <tr><td>19:00</td><td>Dîner</td><td>Hôtel</td><td>-</td></tr>
                 <tr><td>20:00</td><td>Coucher</td><td>Préparation J5</td><td>-</td></tr>
@@ -385,7 +391,7 @@
     </div>
 
     <!-- J5 – CRITIQUE -->
-    <div class="day-card">
+    <div class="day-card" id="j5">
         <div class="day-header warning">
             <div class="day-title"><i class="fas fa-exclamation-triangle"></i> J5 – Jeudi 26 mars</div>
             <div class="day-meta">
@@ -404,7 +410,7 @@
                 <tr><td>08:00</td><td>Lever soleil</td><td>Pause photos Hoggar</td><td>-</td></tr>
                 <tr><td>09:00</td><td>Pause</td><td>Amsel (café)</td><td>-</td></tr>
                 <tr><td>11:00</td><td>Pique-nique</td><td>Oued, ombre rochers</td><td>-</td></tr>
-                <tr><td>15:00</td><td>Arrivée Tamanrasset</td><td>Hotel Tahat</td><td>-</td></tr>
+                <tr><td>15:00</td><td>Arrivée Tamanrasset</td><td><a href="4-Hebergement-Hotels-Resa.html" class="city-link">Hotel Tahat</a></td><td>-</td></tr>
                 <tr><td>15:30-19:00</td><td>⭐ REPOS TOTAL ABSOLU</td><td>Sieste climatisation</td><td>🔴 Obligatoire</td></tr>
                 <tr><td>19:00</td><td>Dîner</td><td>Restaurant centre</td><td>-</td></tr>
                 <tr class="option-green"><td>20:30</td><td>⭐ Option A : Marché nocturne</td><td>30 min</td><td>🟢 Programme complet</td></tr>
@@ -415,7 +421,7 @@
     </div>
 
     <!-- J6 -->
-    <div class="day-card">
+    <div class="day-card" id="j6">
         <div class="day-header">
             <div class="day-title">J6 – Vendredi 27 mars</div>
             <div class="day-meta">
@@ -445,7 +451,7 @@
     </div>
 
     <!-- J7 -->
-    <div class="day-card">
+    <div class="day-card" id="j7">
         <div class="day-header">
             <div class="day-title">J7 – Samedi 28 mars</div>
             <div class="day-meta">
@@ -471,7 +477,7 @@
     </div>
 
     <!-- J8 – CRITIQUE -->
-    <div class="day-card">
+    <div class="day-card" id="j8">
         <div class="day-header warning">
             <div class="day-title">J8 – Dimanche 29 mars</div>
             <div class="day-meta">
@@ -490,7 +496,7 @@
                 <tr><td>07:00</td><td>Lever soleil</td><td>Pause petit-déj route</td><td>-</td></tr>
                 <tr><td>10:00</td><td>Tin Zaouatene</td><td>Passer direct si possible</td><td>-</td></tr>
                 <tr><td>13:00</td><td>Pique-nique</td><td>Piste</td><td>-</td></tr>
-                <tr><td>19:00</td><td>Arrivée Djanet</td><td>Hotel Zeribas</td><td>-</td></tr>
+                <tr><td>19:00</td><td>Arrivée Djanet</td><td><a href="4-Hebergement-Hotels-Resa.html" class="city-link">Hotel Zeribas</a></td><td>-</td></tr>
                 <tr><td>19:30-? </td><td>⭐ REPOS TOTAL</td><td>-</td><td>🔴 Obligatoire</td></tr>
                 <tr><td>20:00</td><td>Dîner léger</td><td>Hôtel</td><td>-</td></tr>
                 <tr><td>21:30</td><td>Coucher</td><td>-</td><td>-</td></tr>
@@ -499,7 +505,7 @@
     </div>
 
     <!-- J9 -->
-    <div class="day-card">
+    <div class="day-card" id="j9">
         <div class="day-header">
             <div class="day-title">J9 – Lundi 30 mars</div>
             <div class="day-meta">
@@ -524,7 +530,7 @@
     </div>
 
     <!-- J10 -->
-    <div class="day-card">
+    <div class="day-card" id="j10">
         <div class="day-header">
             <div class="day-title">J10 – Mardi 31 mars</div>
             <div class="day-meta">
@@ -553,7 +559,7 @@
     </div>
 
     <!-- J11 -->
-    <div class="day-card">
+    <div class="day-card" id="j11">
         <div class="day-header">
             <div class="day-title">J11 – Mercredi 1er avril</div>
             <div class="day-meta">
@@ -582,7 +588,7 @@
     </div>
 
     <!-- J12 -->
-    <div class="day-card">
+    <div class="day-card" id="j12">
         <div class="day-header">
             <div class="day-title">J12 – Jeudi 2 avril</div>
             <div class="day-meta">
@@ -599,7 +605,7 @@
                 <tr><td>07:30</td><td>Départ</td><td>N3</td><td>-</td></tr>
                 <tr><td>10:00</td><td>Pause</td><td>Paysage Tassili</td><td>-</td></tr>
                 <tr><td>12:00</td><td>Pique-nique</td><td>-</td><td>-</td></tr>
-                <tr><td>14:00</td><td>Arrivée Illizi</td><td>Dar Dhiaf</td><td>-</td></tr>
+                <tr><td>14:00</td><td>Arrivée Illizi</td><td><a href="4-Hebergement-Hotels-Resa.html" class="city-link">Dar Dhiaf</a></td><td>-</td></tr>
                 <tr><td>14:30-17:00</td><td>⭐ REPOS</td><td>-</td><td>🔴 Repos total</td></tr>
                 <tr class="option-green"><td>17:00-19:00</td><td>⭐ Option A : Marché touareg + centre</td><td>-</td><td>🟢 Programme complet</td></tr>
                 <tr class="option-yellow"><td>17:00-19:00</td><td>Option B : Terrasse hôtel</td><td>-</td><td>🟡 Fatigue modérée</td></tr>
@@ -610,7 +616,7 @@
     </div>
 
     <!-- J13 -->
-    <div class="day-card">
+    <div class="day-card" id="j13">
         <div class="day-header">
             <div class="day-title">J13 – Vendredi 3 avril</div>
             <div class="day-meta">
@@ -635,7 +641,7 @@
     </div>
 
     <!-- J14 -->
-    <div class="day-card">
+    <div class="day-card" id="j14">
         <div class="day-header">
             <div class="day-title">J14 – Samedi 4 avril</div>
             <div class="day-meta">
@@ -650,7 +656,7 @@
                 <tr><th>Heure</th><th>Activité</th><th>Détail</th><th>Option Fatigue</th></tr>
                 <tr><td>08:00</td><td>Lever</td><td>-</td><td>08:30</td></tr>
                 <tr><td>09:00</td><td>Départ</td><td>N3</td><td>-</td></tr>
-                <tr><td>12:00</td><td>Arrivée In Amenas</td><td>Hotel Ayanis</td><td>-</td></tr>
+                <tr><td>12:00</td><td>Arrivée In Amenas</td><td><a href="4-Hebergement-Hotels-Resa.html" class="city-link">Hotel Ayanis</a></td><td>-</td></tr>
                 <tr><td>12:30</td><td>Déjeuner</td><td>-</td><td>-</td></tr>
                 <tr><td>13:30-17:00</td><td>⭐ SIESTE</td><td>-</td><td>🔴 Repos total</td></tr>
                 <tr class="option-green"><td>17:00-19:00</td><td>⭐ Option A : Visite zone pétrolière</td><td>Mémorial</td><td>🟢 Programme complet</td></tr>
@@ -662,7 +668,7 @@
     </div>
 
     <!-- J15 – NOUVEAU (In Amenas → Ouargla) -->
-    <div class="day-card">
+    <div class="day-card" id="j15">
         <div class="day-header warning">
             <div class="day-title">J15 – Dimanche 5 avril</div>
             <div class="day-meta">
@@ -679,7 +685,7 @@
                 <tr><td>04:30</td><td>Départ</td><td>Traversée Grand Erg Oriental</td><td>-</td></tr>
                 <tr><td>08:00</td><td>Pause</td><td>Café route</td><td>-</td></tr>
                 <tr><td>11:00</td><td>Pique-nique</td><td>-</td><td>-</td></tr>
-                <tr><td>15:00</td><td>Arrivée Ouargla</td><td>Hotel El-Bey</td><td>-</td></tr>
+                <tr><td>15:00</td><td>Arrivée Ouargla</td><td><a href="4-Hebergement-Hotels-Resa.html" class="city-link">Hotel El-Bey</a></td><td>-</td></tr>
                 <tr><td>15:30-19:00</td><td>⭐ REPOS TOTAL</td><td>Piscine, climatisation</td><td>🔴 Obligatoire</td></tr>
                 <tr><td>19:30</td><td>Dîner</td><td>Hôtel</td><td>-</td></tr>
                 <tr><td>21:00</td><td>Coucher</td><td>-</td><td>-</td></tr>
@@ -688,7 +694,7 @@
     </div>
 
     <!-- J16 – Ouargla (visite) -->
-    <div class="day-card">
+    <div class="day-card" id="j16">
         <div class="day-header">
             <div class="day-title">J16 – Lundi 6 avril</div>
             <div class="day-meta">
@@ -714,7 +720,7 @@
     </div>
 
     <!-- J17 – Ouargla → Biskra (1 nuit) -->
-    <div class="day-card">
+    <div class="day-card" id="j17">
         <div class="day-header">
             <div class="day-title">J17 – Mardi 7 avril</div>
             <div class="day-meta">
@@ -729,7 +735,7 @@
                 <tr><th>Heure</th><th>Activité</th><th>Détail</th><th>Option Fatigue</th></tr>
                 <tr><td>08:00</td><td>Lever</td><td>-</td><td>08:30</td></tr>
                 <tr><td>09:00</td><td>Départ</td><td>RN3</td><td>-</td></tr>
-                <tr><td>12:00</td><td>Arrivée Biskra</td><td>Hotel Vescera</td><td>-</td></tr>
+                <tr><td>12:00</td><td>Arrivée Biskra</td><td><a href="4-Hebergement-Hotels-Resa.html" class="city-link">Hotel Vescera</a></td><td>-</td></tr>
                 <tr><td>12:30</td><td>Déjeuner</td><td>-</td><td>-</td></tr>
                 <tr><td>13:30-16:00</td><td>⭐ SIESTE</td><td>-</td><td>🔴 Repos total</td></tr>
                 <tr class="option-green"><td>16:00-18:00</td><td>⭐ HAMMAM SALHINE</td><td>Sources chaudes thérapeutiques</td><td>🟢 Programme complet</td></tr>
@@ -741,7 +747,7 @@
     </div>
 
     <!-- J18 – Biskra → Ibazizen -->
-    <div class="day-card">
+    <div class="day-card" id="j18">
         <div class="day-header">
             <div class="day-title">J18 – Mercredi 8 avril</div>
             <div class="day-meta">
@@ -768,7 +774,7 @@
     </div>
 
     <!-- J19 – Repos Ibazizen -->
-    <div class="day-card">
+    <div class="day-card" id="j19">
         <div class="day-header">
             <div class="day-title">J19 – Jeudi 9 avril</div>
             <div class="day-meta">
@@ -788,7 +794,7 @@
     </div>
 
     <!-- J20 – Retour France -->
-    <div class="day-card">
+    <div class="day-card" id="j20">
         <div class="day-header">
             <div class="day-title">J20 – Vendredi 10 avril</div>
             <div class="day-meta">
@@ -825,5 +831,8 @@
         Mise à jour février 2026 • 19 jours sur place • 4 750 km</p>
     </div>
 </div>
+</div></div></div>
+<script src="js/navigation.js"></script>
+<script>initNavigation('8-PlanningJourParJour.html');</script>
 </body>
 </html>

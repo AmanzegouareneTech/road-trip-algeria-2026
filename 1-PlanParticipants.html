@@ -130,10 +130,16 @@
             font-weight: bold;
             color: #1976d2;
         }
+        /* Sidebar layout overrides */
+        body { margin: 0; padding: 0; background: #f0f2f5; }
+        .container { max-width: 100%; margin: 0; border-radius: 0; box-shadow: none; }
     </style>
 <base target="_blank">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<div class="site-wrapper"><div class="main-content"><div class="page-container">
 <div class="container">
     <h1>🚗 ÉTAPE 1 – DOCUMENT DE PRÉPARATION<br>〈 style harmonisé 2026 〉</h1>
     <p style="text-align:center; font-size:16px; color:#666; margin-bottom:30px;">
@@ -164,7 +170,7 @@
         </tr>
         <tr class="route">
             <td class="date-col"><strong>J1</strong></td>
-            <td><strong>Ibazizen → Laghouat</strong></td>
+            <td><strong>Ibazizen → <a href="8-PlanningJourParJour.html#j1" class="city-link">Laghouat</a></strong></td>
             <td>580</td>
             <td>7h30</td>
             <td>Djelfa (rupestres), Aïn Oussera</td>
@@ -173,7 +179,7 @@
         </tr>
         <tr class="route">
             <td class="date-col"><strong>J2</strong></td>
-            <td><strong>Laghouat → Ghardaïa</strong></td>
+            <td><strong>Laghouat → <a href="8-PlanningJourParJour.html#j2" class="city-link">Ghardaïa</a></strong></td>
             <td>200</td>
             <td>3h</td>
             <td>Berriane (ksar), El Goléa</td>
@@ -195,7 +201,7 @@
         </tr>
         <tr class="route">
             <td class="date-col"><strong>J5</strong></td>
-            <td><strong>El Menia → In Salah</strong></td>
+            <td><strong>El Menia → <a href="8-PlanningJourParJour.html#j4" class="city-link">In Salah</a></strong></td>
             <td>300</td>
             <td>4h</td>
             <td>Aoulef, Adrar (détour possible)</td>
@@ -204,7 +210,7 @@
         </tr>
         <tr class="route">
             <td class="date-col"><strong>J6</strong></td>
-            <td><strong>In Salah → Tamanrasset</strong></td>
+            <td><strong>In Salah → <a href="8-PlanningJourParJour.html#j5" class="city-link">Tamanrasset</a></strong></td>
             <td>665</td>
             <td>9h30</td>
             <td>Arak (fossiles), Tazrouk</td>
@@ -217,7 +223,7 @@
         </tr>
         <tr class="route">
             <td class="date-col"><strong>J8</strong></td>
-            <td><strong>Tamanrasset → Djanet</strong></td>
+            <td><strong>Tamanrasset → <a href="8-PlanningJourParJour.html#j8" class="city-link">Djanet</a></strong></td>
             <td>686</td>
             <td>10h</td>
             <td>Bordj El Haouas (essence)</td>
@@ -230,7 +236,7 @@
         </tr>
         <tr class="route">
             <td class="date-col"><strong>J10</strong></td>
-            <td><strong>Djanet → Illizi</strong></td>
+            <td><strong>Djanet → <a href="8-PlanningJourParJour.html#j12" class="city-link">Illizi</a></strong></td>
             <td>412</td>
             <td>6h</td>
             <td>Iherir (canyon), Dider</td>
@@ -256,7 +262,7 @@
         </tr>
         <tr class="route">
             <td class="date-col"><strong>J12</strong></td>
-            <td><strong>Illizi → In Amenas</strong></td>
+            <td><strong>Illizi → <a href="8-PlanningJourParJour.html#j14" class="city-link">In Amenas</a></strong></td>
             <td>174</td>
             <td>2h30</td>
             <td>Bordj Omar Driss</td>
@@ -278,10 +284,10 @@
         </tr>
         <tr class="route">
             <td class="date-col"><strong>J15</strong></td>
-            <td><strong>Hassi Messaoud → Biskra</strong></td>
+            <td><strong>Hassi Messaoud → <a href="8-PlanningJourParJour.html#j17" class="city-link">Biskra</a></strong></td>
             <td>395</td>
             <td>5h</td>
-            <td>Ouargla, Touggourt</td>
+            <td><a href="8-PlanningJourParJour.html#j15" class="city-link">Ouargla</a>, Touggourt</td>
             <td>Vescera ⭐⭐⭐</td>
             <td>Route</td>
         </tr>
@@ -378,5 +384,8 @@
         <p style="font-size:12px;">Base mars 2025 – actualisée pour 2026</p>
     </div>
 </div>
+</div></div></div>
+<script src="js/navigation.js"></script>
+<script>initNavigation('1-PlanParticipants.html');</script>
 </body>
 </html>

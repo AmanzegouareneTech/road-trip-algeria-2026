@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Road Trip Algérie 2026 – Carte Interactive</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="map-page">
+    <div class="site-wrapper">
+        <!-- main content -->
+        <div class="main-content">
+            <div class="map-header">
+                <h1><i class="fa-solid fa-map-location-dot"></i> Road Trip Algérie 2026</h1>
+                <p>21 mars – 10 avril · 4 750 km · 10 villes · 4 voyageurs</p>
+            </div>
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/map.js"></script>
+    <script>
+        initNavigation('index.html');
+        initMap();
+    </script>
+</body>
+</html>

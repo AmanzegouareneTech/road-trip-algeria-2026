@@ -151,10 +151,16 @@
         .badge-confirme { background: #4caf50; }
         .badge-option { background: #ff9800; }
         .badge-urgent { background: #f44336; }
+        /* Sidebar layout overrides */
+        body { margin: 0; padding: 0; background: #f0f2f5; }
+        .container { max-width: 100%; margin: 0; border-radius: 0; box-shadow: none; }
     </style>
 <base target="_blank">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<div class="site-wrapper"><div class="main-content"><div class="page-container">
 <div class="container">
     <h1>📍 ÉTAPE 4 – HÉBERGEMENT & PLAN B<br>〈 mise à jour 2026 〉</h1>
     <p style="text-align:center; font-size:16px; color:#666; margin-bottom:30px;">
@@ -191,7 +197,7 @@
             <th>Statut</th>
         </tr>
         <tr class="confirme">
-            <td><strong>Laghouat</strong><br>J1 (22/03) • 1 nuit</td>
+            <td><strong><a href="8-PlanningJourParJour.html#j1" class="city-link">Laghouat</a></strong><br>J1 (22/03) • 1 nuit</td>
             <td>Hotel Hercules ⭐⭐⭐</td>
             <td>+213 29 21 21 21<br>hercules@laghouat.dz</td>
             <td>✅ Ascenseur récent<br>✅ Parking intérieur fermé<br>✅ Distance parking-chambre 30m</td>
@@ -199,7 +205,7 @@
             <td><span class="badge badge-confirme">À RÉSERVER</span></td>
         </tr>
         <tr class="confirme">
-            <td><strong>Ghardaïa</strong><br>J2-J3 (23-24/03) • 2 nuits</td>
+            <td><strong><a href="8-PlanningJourParJour.html#j2" class="city-link">Ghardaïa</a></strong><br>J2-J3 (23-24/03) • 2 nuits</td>
             <td>Hotel El-Djazair ⭐⭐⭐</td>
             <td>+213 29 96 96 96<br>eldjazair@ghardaia.dz</td>
             <td>✅ Ascenseur<br>✅ Parking ombragé sécurisé<br>⚠️ Chambres étages 1-2 préférables</td>
@@ -207,7 +213,7 @@
             <td><span class="badge badge-urgent">URGENT</span></td>
         </tr>
         <tr class="confirme">
-            <td><strong>In Salah</strong><br>J4 (25/03) • 1 nuit</td>
+            <td><strong><a href="8-PlanningJourParJour.html#j4" class="city-link">In Salah</a></strong><br>J4 (25/03) • 1 nuit</td>
             <td>Hotel Zeribat ⭐⭐⭐</td>
             <td>+213 49 47 01 23<br>zeribat.insalah@gmail.com</td>
             <td>✅ Ascenseur<br>✅ Parking éclairé 24/24<br>✅ Réception 24h</td>
@@ -215,7 +221,7 @@
             <td><span class="badge badge-confirme">À RÉSERVER</span></td>
         </tr>
         <tr class="confirme">
-            <td><strong>Tamanrasset</strong><br>J5-J7 (26-28/03) • 3 nuits</td>
+            <td><strong><a href="8-PlanningJourParJour.html#j5" class="city-link">Tamanrasset</a></strong><br>J5-J7 (26-28/03) • 3 nuits</td>
             <td>Hotel Tahat ⭐⭐⭐</td>
             <td>+213 29 71 73 00<br>reservation@hoteltahat.dz</td>
             <td>✅ Ascenseur récent<br>✅ Parking gardé 24/24<br>✅ Clim puissante<br>✅ Proche marché</td>
@@ -223,7 +229,7 @@
             <td><span class="badge badge-urgent">CRITIQUE</span></td>
         </tr>
         <tr class="confirme">
-            <td><strong>Djanet</strong><br>J8-J11 (29/03-01/04) • 4 nuits</td>
+            <td><strong><a href="8-PlanningJourParJour.html#j8" class="city-link">Djanet</a></strong><br>J8-J11 (29/03-01/04) • 4 nuits</td>
             <td>Hotel Zeribas ⭐⭐</td>
             <td>+213 29 71 00 00<br>zeribas.djanet@yahoo.fr</td>
             <td>✅ Ascenseur (vérifier état)<br>✅ Terrasse vue erg<br>✅ Parking sécurisé<br>⚠️ Eau chaude solaire</td>
@@ -231,7 +237,7 @@
             <td><span class="badge badge-urgent">CRITIQUE</span></td>
         </tr>
         <tr class="confirme">
-            <td><strong>Illizi</strong><br>J12-J13 (02-03/04) • 2 nuits</td>
+            <td><strong><a href="8-PlanningJourParJour.html#j12" class="city-link">Illizi</a></strong><br>J12-J13 (02-03/04) • 2 nuits</td>
             <td>Dar Dhiaf ⭐⭐⭐</td>
             <td>+213 29 47 45 67 (WhatsApp)</td>
             <td>✅ Ascenseur<br>✅ Parking intérieur<br>✅ Proche gendarmerie</td>
@@ -251,7 +257,7 @@
             <th>Statut</th>
         </tr>
         <tr class="confirme">
-            <td><strong>In Amenas</strong><br>J14 (04/04) • 1 nuit</td>
+            <td><strong><a href="8-PlanningJourParJour.html#j14" class="city-link">In Amenas</a></strong><br>J14 (04/04) • 1 nuit</td>
             <td>Hotel Ayanis ⭐⭐⭐</td>
             <td>+213 29 47 77 77<br>ayanis@iamenas.dz</td>
             <td>✅ Ascenseur récent<br>✅ Parking gardé<br>✅ Restaurant ouvert 22h</td>
@@ -259,7 +265,7 @@
             <td><span class="badge badge-confirme">À RÉSERVER</span></td>
         </tr>
         <tr class="confirme" style="background:#e3f2fd !important;">
-            <td><strong>Ouargla</strong><br>J15-J16 (05-06/04) • 2 nuits</td>
+            <td><strong><a href="8-PlanningJourParJour.html#j15" class="city-link">Ouargla</a></strong><br>J15-J16 (05-06/04) • 2 nuits</td>
             <td>Hotel El-Bey ⭐⭐⭐⭐</td>
             <td>+213 29 71 23 45<br>elbey@ouargla.dz</td>
             <td>✅ Ascenseur moderne<br>✅ Piscine<br>✅ Parking immense sécurisé<br>✅ Clim centrale</td>
@@ -267,7 +273,7 @@
             <td><span class="badge badge-urgent">NOUVEAU</span></td>
         </tr>
         <tr class="confirme">
-            <td><strong>Biskra</strong><br>J17 (07/04) • 1 nuit</td>
+            <td><strong><a href="8-PlanningJourParJour.html#j17" class="city-link">Biskra</a></strong><br>J17 (07/04) • 1 nuit</td>
             <td>Hotel Vescera ⭐⭐⭐</td>
             <td>+213 33 73 23 23<br>vescera@biskra.dz</td>
             <td>✅ Ascenseur<br>✅ Piscine<br>✅ Parking ombragé<br>✅ Proche Hammam Salhine (2km)</td>
@@ -364,5 +370,8 @@
         Mise à jour février 2026 • Style harmonisé avec itinéraire final</p>
     </div>
 </div>
+</div></div></div>
+<script src="js/navigation.js"></script>
+<script>initNavigation('4-Hebergement-Hotels-Resa.html');</script>
 </body>
 </html>
