@@ -1,0 +1,382 @@
+/* ===== ROAD TRIP ALGÉRIE 2026 - SHARED STYLES ===== */
+
+/* --- Reset & Base --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* --- Layout: Sidebar + Main --- */
+.site-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- Sidebar Navigation --- */
+.sidebar {
+    width: 280px;
+    min-width: 280px;
+    background: linear-gradient(180deg, #1a3c5e 0%, #1a5f7a 40%, #2a9d8f 100%);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+}
+
+.sidebar-header {
+    padding: 24px 20px 16px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.sidebar-header h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+    border: none;
+    padding: 0;
+    display: block;
+}
+
+.sidebar-header .flag {
+    font-size: 1.8rem;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.sidebar-header .trip-dates {
+    font-size: 0.78rem;
+    opacity: 0.75;
+    margin-top: 4px;
+}
+
+.sidebar-nav {
+    flex: 1;
+    padding: 12px 0;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 20px;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 0.88rem;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-nav a:hover {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    border-left-color: #ffd54f;
+}
+
+.sidebar-nav a.active {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    border-left-color: #ffd54f;
+    font-weight: 600;
+}
+
+.sidebar-nav a i {
+    width: 22px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.sidebar-nav .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.sidebar-nav a.active .step-num {
+    background: #ffd54f;
+    color: #1a3c5e;
+}
+
+.sidebar-footer {
+    padding: 16px 20px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    font-size: 0.75rem;
+    opacity: 0.6;
+    text-align: center;
+}
+
+/* --- Mobile menu toggle --- */
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 1100;
+    background: #1a5f7a;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    transition: background 0.2s;
+}
+
+.menu-toggle:hover {
+    background: #2a9d8f;
+}
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 999;
+}
+
+/* --- Main Content Area --- */
+.main-content {
+    flex: 1;
+    margin-left: 280px;
+    padding: 30px;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* --- Page Content Container (wraps original HTML content) --- */
+.page-container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Map Page Specific --- */
+.map-page .main-content {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.map-header {
+    background: linear-gradient(135deg, #1a5f7a 0%, #2a9d8f 100%);
+    color: #fff;
+    padding: 20px 30px;
+    text-align: center;
+}
+
+.map-header h1 {
+    font-size: 1.6rem;
+    margin-bottom: 4px;
+}
+
+.map-header p {
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+#map {
+    flex: 1;
+    min-height: calc(100vh - 90px);
+    z-index: 1;
+}
+
+.map-legend {
+    position: absolute;
+    bottom: 30px;
+    right: 12px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 8px;
+    padding: 12px 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    z-index: 500;
+    font-size: 0.82rem;
+    line-height: 1.8;
+}
+
+.map-legend h4 {
+    margin-bottom: 6px;
+    color: #1a5f7a;
+    font-size: 0.9rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* --- City Link Styles (cross-references) --- */
+a.city-link {
+    color: #1976d2;
+    text-decoration: none;
+    border-bottom: 1px dashed #1976d2;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+a.city-link:hover {
+    color: #d32f2f;
+    border-bottom-color: #d32f2f;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .sidebar-overlay.open {
+        display: block;
+    }
+
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+        padding-top: 65px;
+    }
+
+    .map-page .main-content {
+        padding: 0;
+        padding-top: 56px;
+    }
+
+    #map {
+        min-height: calc(100vh - 146px);
+    }
+}
+
+@media (max-width: 600px) {
+    .main-content {
+        padding: 12px;
+        padding-top: 60px;
+    }
+
+    .page-container {
+        border-radius: 8px;
+    }
+
+    .map-header h1 {
+        font-size: 1.2rem;
+    }
+}
+
+/* --- Leaflet popup overrides --- */
+.city-popup {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-width: 220px;
+}
+
+.city-popup h3 {
+    color: #1a5f7a;
+    margin: 0 0 6px;
+    font-size: 1.05rem;
+    border-bottom: 2px solid #2a9d8f;
+    padding-bottom: 4px;
+}
+
+.city-popup .popup-day {
+    font-weight: 600;
+    color: #d32f2f;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+}
+
+.city-popup .popup-info {
+    font-size: 0.82rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+.city-popup .popup-info strong {
+    color: #333;
+}
+
+.city-popup .popup-link {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 4px 10px;
+    background: #1a5f7a;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.78rem;
+    transition: background 0.2s;
+}
+
+.city-popup .popup-link:hover {
+    background: #2a9d8f;
+}
+
+/* --- Scroll to top --- */
+.scroll-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #1a5f7a;
+    color: #fff;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    z-index: 800;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    background: #2a9d8f;
+}
