@@ -22,7 +22,7 @@ function initNavigation(activePage) {
         const numSpan = p.num !== null
             ? `<span class="step-num">${p.num}</span>`
             : `<i class="fa-solid ${p.icon}"></i>`;
-        return `<a href="${p.href}" class="${isActive}">${numSpan} ${p.label}</a>`;
+        return `<a href="${p.href}" target="_self" class="${isActive}">${numSpan} ${p.label}</a>`;
     }).join('\n');
 
     const flagSVG = '<svg viewBox="0 0 900 600" width="36" height="24"><rect width="450" height="600" fill="#006233"/><rect x="450" width="450" height="600" fill="#FFF"/><g transform="translate(450,300)"><circle r="150" fill="#D21034"/><circle cx="25" r="120" fill="#FFF"/></g><g transform="translate(490,300)" fill="#D21034"><polygon points="0,-70 18.3,-21.6 66.6,-21.6 26.5,8.3 41.1,56.6 0,26.7 -41.1,56.6 -26.5,8.3 -66.6,-21.6 -18.3,-21.6"/></g></svg>';

@@ -5,7 +5,7 @@ function initMap() {
     const cities = [
         {
             name: 'Ibazizen',
-            lat: 36.75, lng: 5.08,
+            lat: 36.8168, lng: 4.2245,
             day: 'J0 & J19-J20',
             type: 'depart',
             hotel: '—',
@@ -221,11 +221,14 @@ function initMap() {
     };
 
     const segments = [];
+    /* Aller: Ibazizen → Tamanrasset (indices 0-3) */
+    /* Retour: Tamanrasset → Djanet → Illizi → In Amenas → Ouargla → Biskra → Ibazizen (indices 4+) */
+    const tamanrassetIndex = cities.findIndex(c => c.name === 'Tamanrasset');
     for (let i = 0; i < cities.length - 1; i++) {
         segments.push({
             from: [cities[i].lat, cities[i].lng],
             to:   [cities[i + 1].lat, cities[i + 1].lng],
-            type: 'aller',
+            type: i < tamanrassetIndex ? 'aller' : 'retour',
             info: routeInfos[i]
         });
     }
