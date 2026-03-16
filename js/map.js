@@ -5,7 +5,7 @@ function initMap() {
     const cities = [
         {
             name: 'Ibazizen',
-            lat: 36.75, lng: 5.08,
+            lat: 36.8168, lng: 4.2245,
             day: 'J0 & J19-J20',
             type: 'depart',
             hotel: '—',
@@ -18,7 +18,7 @@ function initMap() {
             lat: 33.80, lng: 2.88,
             day: 'J1',
             type: 'etape',
-            hotel: 'Hôtel Hercules ⭐⭐⭐',
+            hotel: 'Hôtel El Boustane',
             info: '550 km depuis Ibazizen · 6h30 de route · Conducteur : Ali',
             details: 'Porte du désert. Visite possible du centre ancien et de la palmeraie.',
             anchor: 'j1'
@@ -28,7 +28,7 @@ function initMap() {
             lat: 32.49, lng: 3.67,
             day: 'J2-J3',
             type: 'repos',
-            hotel: 'Hôtel El-Djazair ⭐⭐⭐',
+            hotel: 'Hôtel de la Gare',
             info: '200 km depuis Laghouat · 3h de route · Conducteur : Jean',
             details: 'Patrimoine UNESCO – Vallée du M\'Zab. Visite des Ksars Beni Isguen et El Ateuf. Marché aux tapis. Repos actif J3.',
             anchor: 'j2'
@@ -38,7 +38,7 @@ function initMap() {
             lat: 27.19, lng: 2.47,
             day: 'J4',
             type: 'etape',
-            hotel: 'Hôtel Zeribat ⭐⭐⭐',
+            hotel: 'Hôtel Tidikelt',
             info: '550 km depuis Ghardaïa · 7h30 de route · Conducteur : Ali',
             details: 'Oasis saharienne. Repos total l\'après-midi – étape de transition vers le Grand Sud.',
             anchor: 'j4'
@@ -48,7 +48,7 @@ function initMap() {
             lat: 22.79, lng: 5.52,
             day: 'J5-J7',
             type: 'repos',
-            hotel: 'Hôtel Tahat ⭐⭐⭐',
+            hotel: 'Hôtel Maha ✅',
             info: '700 km depuis In Salah · 10h de route · ⚠️ Journée très dure',
             details: 'Capitale du Hoggar. Musée, tombeau de Tin Hinan. Excursion Assekrem possible (J6-J7). 3 nuits de repos.',
             anchor: 'j5'
@@ -58,7 +58,7 @@ function initMap() {
             lat: 24.55, lng: 9.48,
             day: 'J8-J11',
             type: 'visite',
-            hotel: 'Hôtel Zeribas ⭐⭐',
+            hotel: 'Auberge ONAT Djanet ✅',
             info: '686 km depuis Tamanrasset · 10h de route · Piste N3 critique',
             details: 'Joyau du Tassili n\'Ajjer. Peintures rupestres Sefar, Tazarift et Jabbaren. Circuit 4×4 guidé. Dîner touareg. 4 nuits.',
             anchor: 'j8'
@@ -68,7 +68,7 @@ function initMap() {
             lat: 26.51, lng: 8.48,
             day: 'J12-J13',
             type: 'repos',
-            hotel: 'Hôtel Dar Dhiaf ⭐⭐⭐',
+            hotel: 'Hôtel Bouamama',
             info: '412 km depuis Djanet · 6h de route',
             details: 'Repos et excursions optionnelles en 4×4 dans le Tassili. 2 nuits.',
             anchor: 'j12'
@@ -78,7 +78,7 @@ function initMap() {
             lat: 28.05, lng: 9.57,
             day: 'J14',
             type: 'etape',
-            hotel: 'Hôtel Ayanis ⭐⭐⭐',
+            hotel: 'Hôtel Ayanis',
             info: '174 km depuis Illizi · 3h de route',
             details: 'Étape courte de transition pour le retour vers le nord.',
             anchor: 'j14'
@@ -88,7 +88,7 @@ function initMap() {
             lat: 31.95, lng: 5.33,
             day: 'J15-J16',
             type: 'repos',
-            hotel: 'Hôtel El-Bey ⭐⭐⭐⭐',
+            hotel: 'Hôtel Aurélie Picard',
             info: '760 km depuis In Amenas · 10-11h de route · Grand Erg Oriental',
             details: 'Remplace Hassi Messaoud. Visite du Ksar et des oasis. 2 nuits de repos.',
             anchor: 'j15'
@@ -98,7 +98,7 @@ function initMap() {
             lat: 34.85, lng: 5.73,
             day: 'J17-J18',
             type: 'etape',
-            hotel: 'Hôtel Vescera ⭐⭐⭐',
+            hotel: 'Hôtel Les Ziban',
             info: '205 km depuis Ouargla · 3h de route',
             details: 'Oasis des Ziban. Bains thermaux Hammam Salhine (recommandé pour Ahmed). 1 nuit.',
             anchor: 'j17'
@@ -221,11 +221,14 @@ function initMap() {
     };
 
     const segments = [];
+    /* Aller: Ibazizen → Tamanrasset (indices 0-3) */
+    /* Retour: Tamanrasset → Djanet → Illizi → In Amenas → Ouargla → Biskra → Ibazizen (indices 4+) */
+    const tamanrassetIndex = cities.findIndex(c => c.name === 'Tamanrasset');
     for (let i = 0; i < cities.length - 1; i++) {
         segments.push({
             from: [cities[i].lat, cities[i].lng],
             to:   [cities[i + 1].lat, cities[i + 1].lng],
-            type: 'aller',
+            type: i < tamanrassetIndex ? 'aller' : 'retour',
             info: routeInfos[i]
         });
     }
